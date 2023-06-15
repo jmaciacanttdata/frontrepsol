@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +21,18 @@ namespace AutoRepsol
         string caseId = null;
         string caseName = null;
         SqlConnection conn;
+        DataSet ds;
+        SqlDataAdapter da;
+        DataTable dt;
+        private readonly IConfiguration _configuration;
 
         public App(string dbUser, SqlConnection _conn)
         {
             InitializeComponent();
+            _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             lblUserName.Text = dbUser;
-            lblServer.Text = "triton.repsol.com";
+            lblServer.Text = _configuration.GetSection("dbServer").Value;
+            lblCatalog.Text = _configuration.GetSection("dbDataBase").Value;
             conn = _conn;
             ChargeData();
         }
@@ -36,7 +43,7 @@ namespace AutoRepsol
             dbData.Columns.Add("Vertical", "Vertical");
             dbData.Columns.Add("Detalle", "Detalle");
             dbData.Columns.Add("Detalle", "Activo");
-            //Duda
+
             dbData.Columns[0].Width = (int)(dbData.Width * 0.1);
             dbData.Columns[1].Width = (int)(dbData.Width * 0.2);
             dbData.Columns[2].Width = (int)(dbData.Width * 0.6);
@@ -48,23 +55,34 @@ namespace AutoRepsol
         private void ChargeData()
         {
             PrepareDataGridView();
-            dbData.Rows.Add("1", "Facturación", "Prueba 1", "Si");
+            var query = "SELECT * FROM TR_OPTIMIZACION_AUTO_SCRIPT";
+            SqlCommand command = new SqlCommand(query, conn);
+            da = new SqlDataAdapter(command);
+            dt = new DataTable();
+            dbData.Rows.Add();
+            da.Fill(dt);
+            dbData.DataSource = dt;
+            /*int i = 0;
+            while (i < 5)
+            {
+
+            }*/
+
+            /*dbData.Rows.Add("1", "Facturación", "Prueba 1", "Si");
             dbData.Rows.Add("2", "Facturación", "Prueba 2", "No");
             dbData.Rows.Add("3", "Backoffice", "Prueba 3", "Si");
-            dbData.Rows.Add("4", "Logística", "Prueba 3", "Si");
+            dbData.Rows.Add("4", "Logística", "Prueba 3", "Si");*/
         }
 
         private void CLoseApp(object sender, FormClosingEventArgs e)
         {
             if (CloseCancel() == false)
             {
-                //Duda
                 e.Cancel = true;
             }
             else
             {
                 conn.Close();
-                //Duda
                 Environment.Exit(0);
             }
         }
@@ -91,7 +109,9 @@ namespace AutoRepsol
                 message = "¿Está seguro de querer cerrar la sesión del usuario?";
             string caption = "AutoRepsol";
 
-            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
                 return true;
@@ -126,7 +146,6 @@ namespace AutoRepsol
 
         private void enableDisableDelete(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            //Duda
             if (dbData.SelectedCells.Count > 0)
             {
                 int selectedrowindex = dbData.SelectedCells[0].RowIndex;

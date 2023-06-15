@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\AutoRepsol.csproj": {}
+    "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\AutoRepsol.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\AutoRepsol.csproj": {
+    "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\AutoRepsol.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\AutoRepsol.csproj",
+        "projectUniqueName": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\AutoRepsol.csproj",
         "projectName": "AutoRepsol",
-        "projectPath": "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\AutoRepsol.csproj",
+        "projectPath": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\AutoRepsol.csproj",
         "packagesPath": "C:\\Users\\hboixmar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\obj\\",
+        "outputPath": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hboixmar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,18 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"
