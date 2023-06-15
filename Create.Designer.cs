@@ -35,33 +35,34 @@
             dbActivo = new ComboBox();
             label3 = new Label();
             label4 = new Label();
+            dbQuery = new TextBox();
             btnSave = new Button();
             btnCancel = new Button();
-            dbQuery = new RichTextBox();
             SuspendLayout();
             // 
             // dbDetalle
             // 
-            dbDetalle.Location = new Point(23, 69);
+            dbDetalle.Location = new Point(20, 52);
+            dbDetalle.Margin = new Padding(3, 2, 3, 2);
             dbDetalle.Name = "dbDetalle";
-            dbDetalle.Size = new Size(939, 27);
+            dbDetalle.Size = new Size(822, 23);
             dbDetalle.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(23, 40);
+            label1.Location = new Point(20, 30);
             label1.Name = "label1";
-            label1.Size = new Size(57, 20);
+            label1.Size = new Size(43, 15);
             label1.TabIndex = 1;
             label1.Text = "Detalle";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(26, 129);
+            label2.Location = new Point(23, 97);
             label2.Name = "label2";
-            label2.Size = new Size(58, 20);
+            label2.Size = new Size(45, 15);
             label2.TabIndex = 2;
             label2.Text = "Vertical";
             // 
@@ -69,43 +70,55 @@
             // 
             dbVertical.FormattingEnabled = true;
             dbVertical.Items.AddRange(new object[] { "BO - Backoffice", "FO - Frontoffice", "FA - Facturación", "PM - Pricing", "LO - Logística" });
-            dbVertical.Location = new Point(27, 155);
+            dbVertical.Location = new Point(24, 116);
+            dbVertical.Margin = new Padding(3, 2, 3, 2);
             dbVertical.Name = "dbVertical";
-            dbVertical.Size = new Size(323, 28);
+            dbVertical.Size = new Size(283, 23);
             dbVertical.TabIndex = 3;
             // 
             // dbActivo
             // 
             dbActivo.FormattingEnabled = true;
             dbActivo.Items.AddRange(new object[] { "Si", "No" });
-            dbActivo.Location = new Point(400, 155);
+            dbActivo.Location = new Point(350, 116);
+            dbActivo.Margin = new Padding(3, 2, 3, 2);
             dbActivo.Name = "dbActivo";
-            dbActivo.Size = new Size(151, 28);
+            dbActivo.Size = new Size(133, 23);
             dbActivo.TabIndex = 4;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(399, 129);
+            label3.Location = new Point(349, 97);
             label3.Name = "label3";
-            label3.Size = new Size(51, 20);
+            label3.Size = new Size(41, 15);
             label3.TabIndex = 5;
             label3.Text = "Activo";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 221);
+            label4.Location = new Point(28, 166);
             label4.Name = "label4";
-            label4.Size = new Size(96, 20);
+            label4.Size = new Size(78, 15);
             label4.TabIndex = 6;
             label4.Text = "Consulta SQL";
             // 
+            // dbQuery
+            // 
+            dbQuery.Location = new Point(28, 186);
+            dbQuery.Margin = new Padding(3, 2, 3, 2);
+            dbQuery.Multiline = true;
+            dbQuery.Name = "dbQuery";
+            dbQuery.Size = new Size(814, 206);
+            dbQuery.TabIndex = 7;
+            // 
             // btnSave
             // 
-            btnSave.Location = new Point(869, 563);
+            btnSave.Location = new Point(760, 422);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
+            btnSave.Size = new Size(82, 22);
             btnSave.TabIndex = 8;
             btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = true;
@@ -113,32 +126,24 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(757, 563);
+            btnCancel.Location = new Point(662, 422);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
+            btnCancel.Size = new Size(82, 22);
             btnCancel.TabIndex = 9;
             btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += closeCreateForm;
             // 
-            // dbQuery
-            // 
-            dbQuery.BorderStyle = BorderStyle.None;
-            dbQuery.Location = new Point(32, 244);
-            dbQuery.Name = "dbQuery";
-            dbQuery.Size = new Size(930, 294);
-            dbQuery.TabIndex = 10;
-            dbQuery.Text = "";
-            // 
             // Create
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1013, 624);
-            Controls.Add(dbQuery);
+            ClientSize = new Size(886, 468);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
+            Controls.Add(dbQuery);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(dbActivo);
@@ -147,6 +152,7 @@
             Controls.Add(label1);
             Controls.Add(dbDetalle);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Create";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Create";
@@ -163,8 +169,8 @@
         private ComboBox dbActivo;
         private Label label3;
         private Label label4;
+        private TextBox dbQuery;
         private Button btnSave;
         private Button btnCancel;
-        private RichTextBox dbQuery;
     }
 }

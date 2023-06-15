@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.VisualBasic;
+﻿using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,15 +20,12 @@ namespace AutoRepsol
         string caseId = null;
         string caseName = null;
         SqlConnection conn;
-        private readonly IConfiguration _configuration;
 
         public App(string dbUser, SqlConnection _conn)
         {
             InitializeComponent();
-            _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             lblUserName.Text = dbUser;
-            lblServer.Text = _configuration.GetSection("dbServer").Value;
-            lblCatalog.Text = _configuration.GetSection("dbDataBase").Value;
+            lblServer.Text = "triton.repsol.com";
             conn = _conn;
             ChargeData();
         }
@@ -40,7 +36,7 @@ namespace AutoRepsol
             dbData.Columns.Add("Vertical", "Vertical");
             dbData.Columns.Add("Detalle", "Detalle");
             dbData.Columns.Add("Detalle", "Activo");
-
+            //Duda
             dbData.Columns[0].Width = (int)(dbData.Width * 0.1);
             dbData.Columns[1].Width = (int)(dbData.Width * 0.2);
             dbData.Columns[2].Width = (int)(dbData.Width * 0.6);
@@ -62,11 +58,13 @@ namespace AutoRepsol
         {
             if (CloseCancel() == false)
             {
+                //Duda
                 e.Cancel = true;
             }
             else
             {
                 conn.Close();
+                //Duda
                 Environment.Exit(0);
             }
         }
@@ -75,9 +73,7 @@ namespace AutoRepsol
         {
             const string message = "¿Está seguro de querer cerrar la aplicación?";
             const string caption = "AutoRepsol";
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
                 return true;
@@ -95,9 +91,7 @@ namespace AutoRepsol
                 message = "¿Está seguro de querer cerrar la sesión del usuario?";
             string caption = "AutoRepsol";
 
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
                 return true;
@@ -132,6 +126,7 @@ namespace AutoRepsol
 
         private void enableDisableDelete(object sender, DataGridViewRowStateChangedEventArgs e)
         {
+            //Duda
             if (dbData.SelectedCells.Count > 0)
             {
                 int selectedrowindex = dbData.SelectedCells[0].RowIndex;

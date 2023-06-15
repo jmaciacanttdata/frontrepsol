@@ -40,29 +40,29 @@
             // 
             // dbUser
             // 
-            dbUser.Location = new Point(34, 134);
+            dbUser.Location = new Point(42, 168);
             dbUser.Margin = new Padding(2);
             dbUser.Name = "dbUser";
-            dbUser.Size = new Size(254, 27);
+            dbUser.Size = new Size(316, 31);
             dbUser.TabIndex = 0;
             // 
             // dbPassword
             // 
-            dbPassword.Location = new Point(34, 206);
+            dbPassword.Location = new Point(42, 258);
             dbPassword.Margin = new Padding(2);
             dbPassword.Name = "dbPassword";
             dbPassword.PasswordChar = '*';
-            dbPassword.Size = new Size(254, 27);
+            dbPassword.Size = new Size(316, 31);
             dbPassword.TabIndex = 1;
             // 
             // lblUser
             // 
             lblUser.AutoSize = true;
             lblUser.ForeColor = Color.White;
-            lblUser.Location = new Point(34, 112);
+            lblUser.Location = new Point(42, 140);
             lblUser.Margin = new Padding(2, 0, 2, 0);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(59, 20);
+            lblUser.Size = new Size(72, 25);
             lblUser.TabIndex = 2;
             lblUser.Text = "Usuario";
             // 
@@ -70,10 +70,10 @@
             // 
             lblPassword.AutoSize = true;
             lblPassword.ForeColor = Color.White;
-            lblPassword.Location = new Point(34, 183);
+            lblPassword.Location = new Point(42, 229);
             lblPassword.Margin = new Padding(2, 0, 2, 0);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(83, 20);
+            lblPassword.Size = new Size(101, 25);
             lblPassword.TabIndex = 3;
             lblPassword.Text = "Contraseña";
             // 
@@ -81,10 +81,10 @@
             // 
             btnLogin.BackColor = SystemColors.InactiveCaption;
             btnLogin.FlatStyle = FlatStyle.System;
-            btnLogin.Location = new Point(106, 280);
+            btnLogin.Location = new Point(132, 350);
             btnLogin.Margin = new Padding(2);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(104, 38);
+            btnLogin.Size = new Size(130, 48);
             btnLogin.TabIndex = 4;
             btnLogin.Text = "Log In";
             btnLogin.UseVisualStyleBackColor = false;
@@ -94,10 +94,10 @@
             // 
             lblClose.BackColor = SystemColors.Control;
             lblClose.Image = (Image)resources.GetObject("lblClose.Image");
-            lblClose.Location = new Point(282, 5);
+            lblClose.Location = new Point(352, 6);
             lblClose.Margin = new Padding(2, 0, 2, 0);
             lblClose.Name = "lblClose";
-            lblClose.Size = new Size(32, 30);
+            lblClose.Size = new Size(40, 38);
             lblClose.TabIndex = 6;
             lblClose.Text = " ";
             lblClose.Click += CloseApp;
@@ -108,9 +108,10 @@
             dbConnectionResult.BackColor = Color.Transparent;
             dbConnectionResult.Dock = DockStyle.Bottom;
             dbConnectionResult.ForeColor = Color.Red;
-            dbConnectionResult.Location = new Point(0, 375);
+            dbConnectionResult.Location = new Point(0, 469);
+            dbConnectionResult.Margin = new Padding(4, 0, 4, 0);
             dbConnectionResult.Name = "dbConnectionResult";
-            dbConnectionResult.Size = new Size(50, 20);
+            dbConnectionResult.Size = new Size(59, 25);
             dbConnectionResult.TabIndex = 7;
             dbConnectionResult.Text = "label1";
             dbConnectionResult.TextAlign = ContentAlignment.MiddleCenter;
@@ -118,11 +119,11 @@
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(318, 395);
+            ClientSize = new Size(398, 494);
             Controls.Add(dbConnectionResult);
             Controls.Add(lblClose);
             Controls.Add(btnLogin);

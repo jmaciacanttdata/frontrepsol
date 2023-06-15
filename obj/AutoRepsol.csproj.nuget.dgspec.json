@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jmcjo\\Desktop\\FrontRepsol\\frontrepsol\\AutoRepsol.csproj": {}
+    "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\AutoRepsol.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jmcjo\\Desktop\\FrontRepsol\\frontrepsol\\AutoRepsol.csproj": {
+    "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\AutoRepsol.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jmcjo\\Desktop\\FrontRepsol\\frontrepsol\\AutoRepsol.csproj",
+        "projectUniqueName": "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\AutoRepsol.csproj",
         "projectName": "AutoRepsol",
-        "projectPath": "C:\\Users\\jmcjo\\Desktop\\FrontRepsol\\frontrepsol\\AutoRepsol.csproj",
-        "packagesPath": "C:\\Users\\jmcjo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jmcjo\\Desktop\\FrontRepsol\\frontrepsol\\obj\\",
+        "projectPath": "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\AutoRepsol.csproj",
+        "packagesPath": "C:\\Users\\hboixmar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hboixmar\\Desktop\\AutoRepsol\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\jmcjo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\hboixmar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,18 +40,6 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
-            "Microsoft.Extensions.Configuration": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "Microsoft.Extensions.Configuration.Abstractions": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "Microsoft.Extensions.Configuration.Json": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"
@@ -81,7 +64,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }
