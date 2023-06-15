@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,12 @@ namespace AutoRepsol
     public partial class Create : Form
     {
         SqlConnection conn;
+        private readonly IConfiguration _configuration;
 
         public Create(SqlConnection _conn)
         {
             InitializeComponent();
+            _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             conn = _conn;
         }
 

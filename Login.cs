@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace AutoRepsol
     {
         string connetionString;
         SqlConnection cnn;
+        private readonly IConfiguration _configuration;
 
         public Login()
         {
@@ -22,6 +24,7 @@ namespace AutoRepsol
             lblClose.BackColor = System.Drawing.Color.Transparent;
             lblUser.BackColor = System.Drawing.Color.Transparent;
             lblPassword.BackColor = System.Drawing.Color.Transparent;
+            _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
         }
 
         private void CloseApp(object sender, EventArgs e)
@@ -36,8 +39,9 @@ namespace AutoRepsol
             string dbUserName = dbUser.Text;
             string dbUserPass = dbPassword.Text;
 
-            //TODO: Eeditar la conexión para apuntar a la bbdd
-            connetionString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=TRITON;User ID=" + dbUserName + ";Password=" + dbUserPass;
+            string dbServer = _configuration.GetSection("dbServer").Value;
+            string dbDataBase = _configuration.GetSection("dbDataBase").Value;
+            connetionString = String.Format(_configuration.GetSection("dbConnection").Value, dbServer, dbDataBase, dbUserName, dbUserPass);
             cnn = new SqlConnection(connetionString);
 
             try

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +21,15 @@ namespace AutoRepsol
         string caseId = null;
         string caseName = null;
         SqlConnection conn;
+        private readonly IConfiguration _configuration;
 
         public App(string dbUser, SqlConnection _conn)
         {
             InitializeComponent();
+            _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             lblUserName.Text = dbUser;
-            lblServer.Text = "triton.repsol.com";
+            lblServer.Text = _configuration.GetSection("dbServer").Value;
+            lblCatalog.Text = _configuration.GetSection("dbDataBase").Value;
             conn = _conn;
             ChargeData();
         }
@@ -147,7 +151,7 @@ namespace AutoRepsol
         private void deleteCase(object sender, EventArgs e)
         {
             var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar el registro seleccionado?", "Borrado de Registros", MessageBoxButtons.YesNo);
-            if(confirmDelete == DialogResult.Yes)
+            if (confirmDelete == DialogResult.Yes)
             {
                 //TODO: Lanzar la query para eliminar el registro con id=caseId
                 MessageBox.Show("El registro ha sido eliminado correctamente.", "Borrado de Registros");
