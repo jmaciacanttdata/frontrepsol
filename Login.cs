@@ -16,6 +16,7 @@ namespace AutoRepsol
     {
         string connetionString;
         SqlConnection cnn;
+        bool isInitialize = false;
         private readonly IConfiguration _configuration;
 
         public Login()
@@ -29,7 +30,9 @@ namespace AutoRepsol
 
         private void CloseApp(object sender, EventArgs e)
         {
-            cnn.Close();
+            if(isInitialize)
+                cnn.Close();
+
             Application.Exit();
         }
 
@@ -47,6 +50,7 @@ namespace AutoRepsol
             try
             {
                 cnn.Open();
+                isInitialize = true;
                 var app = new App(dbUserName, cnn);
                 app.Show();
                 this.Hide();
