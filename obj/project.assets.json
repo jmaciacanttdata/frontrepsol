@@ -1032,6 +1032,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "Microsoft.Extensions.Configuration >= 7.0.0",
+      "Microsoft.Extensions.Configuration.Abstractions >= 7.0.0",
       "Microsoft.Extensions.Configuration.Json >= 7.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
@@ -1043,11 +1045,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jmcjo\\Downloads\\AutoRepsol\\AutoRepsol.csproj",
+      "projectUniqueName": "C:\\Users\\jmcjo\\Desktop\\FrontRepsol\\frontrepsol\\AutoRepsol.csproj",
       "projectName": "AutoRepsol",
-      "projectPath": "C:\\Users\\jmcjo\\Downloads\\AutoRepsol\\AutoRepsol.csproj",
+      "projectPath": "C:\\Users\\jmcjo\\Desktop\\FrontRepsol\\frontrepsol\\AutoRepsol.csproj",
       "packagesPath": "C:\\Users\\jmcjo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jmcjo\\Downloads\\AutoRepsol\\obj\\",
+      "outputPath": "C:\\Users\\jmcjo\\Desktop\\FrontRepsol\\frontrepsol\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1081,6 +1083,14 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
+          "Microsoft.Extensions.Configuration": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
+          "Microsoft.Extensions.Configuration.Abstractions": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
           "Microsoft.Extensions.Configuration.Json": {
             "target": "Package",
             "version": "[7.0.0, )"

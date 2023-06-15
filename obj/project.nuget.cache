@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7hmYaB/Sqy+NkBsOD+SHSUW1ib6bm5dC9m4NIi4/vLpJbezcicx9EZvEw12loWu/n8ew86Wi5KtlqHdJo2AQyQ==",
+  "dgSpecHash": "u3EgOvESrl4sgiW/9DQkJiq45NXXB5JyNCLW50pY5Z4W/CaqxaxnC/CfG770ZEOTYGVSH0Ts2Q7VMZNK80HsGQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jmcjo\\Downloads\\AutoRepsol\\AutoRepsol.csproj",
+  "projectFilePath": "C:\\Users\\jmcjo\\Desktop\\FrontRepsol\\frontrepsol\\AutoRepsol.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jmcjo\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\jmcjo\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
