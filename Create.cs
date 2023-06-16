@@ -27,6 +27,7 @@ namespace AutoRepsol
         private void closeCreateForm(object sender, EventArgs e)
         {
             this.Dispose();
+
         }
 
         private void createCase(object sender, EventArgs e)

@@ -30,7 +30,7 @@ namespace AutoRepsol
 
         private void CloseApp(object sender, EventArgs e)
         {
-            if(isInitialize)
+            if (isInitialize)
                 cnn.Close();
 
             Application.Exit();
