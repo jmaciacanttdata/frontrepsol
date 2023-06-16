@@ -21,6 +21,9 @@ namespace AutoRepsol
         string caseId = null;
         string caseName = null;
         SqlConnection conn;
+        DataSet ds;
+        SqlDataAdapter da;
+        DataTable dt;
         private readonly IConfiguration _configuration;
 
         public App(string dbUser, SqlConnection _conn)
@@ -54,11 +57,16 @@ namespace AutoRepsol
             PrepareDataGridView();
             var query = "SELECT * FROM TR_OPTIMIZACION_AUTO_SCRIPT";
             SqlCommand command = new SqlCommand(query, conn);
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
+            da = new SqlDataAdapter(command);
+            dt = new DataTable();
+            dbData.Rows.Add();
             da.Fill(dt);
             dbData.DataSource = dt;
-            
+            /*int i = 0;
+            while (i < 5)
+            {
+
+            }*/
 
             /*dbData.Rows.Add("1", "Facturación", "Prueba 1", "Si");
             dbData.Rows.Add("2", "Facturación", "Prueba 2", "No");
@@ -157,29 +165,11 @@ namespace AutoRepsol
         private void deleteCase(object sender, EventArgs e)
         {
             var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar el registro seleccionado?", "Borrado de Registros", MessageBoxButtons.YesNo);
-            int active = dbData.SelectedCells[3].RowIndex;
-            if (active == 1)
+            if (confirmDelete == DialogResult.Yes)
             {
-                if (confirmDelete == DialogResult.Yes)
-                {
-                    //TODO: Lanzar la query para eliminar el registro con id=caseId
-                    int selectedrowindex = dbData.SelectedCells[0].RowIndex;
-                    var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where id = @selectedrowindex";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@ID", selectedrowindex);
-                    try
-                    {
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("El registro ha sido eliminado correctamente.", "Borrado de Registros");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
+                //TODO: Lanzar la query para eliminar el registro con id=caseId
+                MessageBox.Show("El registro ha sido eliminado correctamente.", "Borrado de Registros");
             }
-            else
-                MessageBox.Show("El registro no se puede eliminar ya que está en estado activo");
         }
     }
 }
