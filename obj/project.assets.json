@@ -1039,19 +1039,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cbledaal\\.nuget\\packages\\": {}
+    "C:\\Users\\hboixmar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\AutoRepsol.csproj",
+      "projectUniqueName": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\AutoRepsol.csproj",
       "projectName": "AutoRepsol",
-      "projectPath": "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\AutoRepsol.csproj",
-      "packagesPath": "C:\\Users\\cbledaal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\obj\\",
+      "projectPath": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\AutoRepsol.csproj",
+      "packagesPath": "C:\\Users\\hboixmar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\cbledaal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hboixmar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

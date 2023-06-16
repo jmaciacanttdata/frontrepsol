@@ -33,6 +33,21 @@ namespace AutoRepsol
         private void createCase(object sender, EventArgs e)
         {
             //TODO: Aquí va el código de guardado del nuevo caso
+           /* var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO, )";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue( ,dbDetalle);
+            cmd.Parameters.AddWithValue( ,dbVertical);
+            cmd.Parameters.AddWithValue( ,dbActivo);
+            cmd.Parameters.AddWithValue( ,dbQuery);
+            try 
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Se ha guardado la consulta correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }*/
             this.Dispose(true);
         }
 
@@ -60,5 +75,5 @@ namespace AutoRepsol
                 LineNumberTextBox.Text += i + 1 + "\n";
             }
         }*/
+        }
     }
-}
