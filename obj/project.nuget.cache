@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uatEOS/bcg1mqOXVgomkeNfI8jprpXKzXIkZ1nF2nyD2GW1m5j9Mmtd+OanX8Ox6pBFp9qyr0FqLDGw5PH7QDA==",
+  "dgSpecHash": "Ljva7fOUmI3vebbQaDoStxpcDMm8RfPrVL3E7GaHgIa2V+rkUnPdqCdCwB0r/tHrksxejiZ8YmBpezYzt5LLBA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\AutoRepsol.csproj",
+  "projectFilePath": "C:\\Users\\hboixmar\\Documents\\GitHub\\frontrepsol\\AutoRepsol.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hboixmar\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\hboixmar\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

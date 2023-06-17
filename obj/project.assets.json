@@ -1044,11 +1044,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\AutoRepsol.csproj",
+      "projectUniqueName": "C:\\Users\\hboixmar\\Documents\\GitHub\\frontrepsol\\AutoRepsol.csproj",
       "projectName": "AutoRepsol",
-      "projectPath": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\AutoRepsol.csproj",
+      "projectPath": "C:\\Users\\hboixmar\\Documents\\GitHub\\frontrepsol\\AutoRepsol.csproj",
       "packagesPath": "C:\\Users\\hboixmar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hboixmar\\Desktop\\Proyectos\\Repsol\\frontrepsol\\obj\\",
+      "outputPath": "C:\\Users\\hboixmar\\Documents\\GitHub\\frontrepsol\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hboixmar\\AppData\\Roaming\\NuGet\\NuGet.Config",
