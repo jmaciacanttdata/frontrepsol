@@ -33,7 +33,7 @@ namespace AutoRepsol
         private void createCase(object sender, EventArgs e)
         {
             //TODO: Aquí va el código de guardado del nuevo caso
-            var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO,VERTICAL, REGULARIZA, CONSULTA_SEL) VALUES(@detalle, @vertical, @activo, @consulta)";
+            var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO,VERTICAL, REGULARIZA, CONSULTA_SEL) VALUES(@detalle, @vertical @activo, @consulta)";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@detalle" ,dbDetalle);
             cmd.Parameters.AddWithValue("@vertical" ,dbVertical);

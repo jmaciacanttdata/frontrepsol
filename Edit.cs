@@ -26,12 +26,6 @@ namespace AutoRepsol
             conn = _conn;
             GetDataCase(IdCase);
         }
-        private void InitializeMyScrollBar()
-        {
-            VScrollBar vScrollBar1 = new VScrollBar();
-            vScrollBar1.Dock = DockStyle.Right;
-            Controls.Add(vScrollBar1);
-        }
 
         public void GetDataCase(int IdCase)
         {
@@ -40,14 +34,12 @@ namespace AutoRepsol
             var query = "SELECT * FROM TR_OPTIMIZACION_AUTO_SCRIPT WHERE ID=1";
             SqlCommand cmd = new SqlCommand(query, conn);
             SqlDataReader reader = cmd.ExecuteReader();
-
             if (reader.Read())
             {
                 dbDetalle.Text = reader["NOMBRE_PROCEDIMIENTO"].ToString();
-                dbVertical.Text = reader["PARAM_SEL"].ToString();
+                dbVertical.Text = reader["VERTICAL"].ToString();
                 dbActivo.Text = reader["REGULARIZA"].ToString();
                 dbQuery.Text = reader["CONSULTA_SEL"].ToString();
-                InitializeMyScrollBar();
             }
         }
 
@@ -60,7 +52,7 @@ namespace AutoRepsol
         {
             //TODO: Aquí va el código para guardar la edición del registro.
             string IdCase = dbIdCase.Text;
-            string query = "Update TR_OPTIMIZACION_AUTO_SCRIPT set NOMBRE_PROCEDIMIENTO=@detalle, blabla=@vertical, REGULARIZA=@activo, CONSULTA_SEL=@sqlQuery WHERE ID=IdCase";
+            string query = "UPDATE FROM TR_OPTIMIZACION_AUTO_SCRIPT set NOMBRE_PROCEDIMIENTO=@detalle, VERTICAL=@vertical, REGULARIZA=@activo, CONSULTA_SEL=@sqlQuery WHERE ID=IdCase";
             SqlCommand cmd = new SqlCommand(query, conn);
 
             cmd.Parameters.AddWithValue("@detalle", dbDetalle);

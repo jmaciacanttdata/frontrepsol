@@ -53,34 +53,11 @@ namespace AutoRepsol
         private void ChargeData()
         {
             PrepareDataGridView();
-            var querycount = "SELECT COUNT(*) FROM TR_OPTIMIZACION_AUTO_SCRIPT";
-            SqlCommand command2 = new SqlCommand(querycount, conn);
-            var num = command2.ExecuteNonQuery();
-            if (num > 1)
-                MessageBox.Show("Hola");
-
-            for (int i = 0; i < 1; i++)
-            {
-                var query = "SELECT * FROM TR_OPTIMIZACION_AUTO_SCRIPT WHERE ID = 1";
-                SqlCommand command = new SqlCommand(query, conn);
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    string Id = reader["ID"].ToString();
-                    string detalle = reader["NOMBRE_PROCEDIMIENTO"].ToString();
-                    string vertical = reader["PARAM_SEL"].ToString();
-                    string activo = reader["REGULARIZA"].ToString();
-                    dbData.Rows.Add(Id, vertical, detalle, activo);
-
-                }
-            }
-            //SqlDataAdapter da = new SqlDataAdapter(command);
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //dbData.DataSource = dt;
-            
-
+            var query = "SELECT ID FROM TR_OPTIMIZACION_AUTO_SCRIPT";
+            //var query = "SELECT OS.ID, QV.VERTICAL, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA FROM TR_QUERY_VERTICAL QV INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery";
+            SqlCommand command = new SqlCommand(query, conn);
+            var data = command.ExecuteReader();
+            dbData.DataSource = data;
             /*dbData.Rows.Add("1", "Facturación", "Prueba 1", "Si");
             dbData.Rows.Add("2", "Facturación", "Prueba 2", "No");
             dbData.Rows.Add("3", "Backoffice", "Prueba 3", "Si");
