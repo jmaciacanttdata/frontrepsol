@@ -45,10 +45,6 @@ namespace AutoRepsol
             {
                 dbDetalle.Text = reader["NOMBRE_PROCEDIMIENTO"].ToString();
                 dbVertical.Text = reader["PARAM_SEL"].ToString();
-                if (dbVertical.Text == null || dbVertical.Text == "")
-                {
-                    dbVertical.Text = "Este campo es nulo";
-                }
                 dbActivo.Text = reader["REGULARIZA"].ToString();
                 dbQuery.Text = reader["CONSULTA_SEL"].ToString();
                 InitializeMyScrollBar();
@@ -63,7 +59,6 @@ namespace AutoRepsol
         private void saveEditCase(object sender, EventArgs e)
         {
             //TODO: Aquí va el código para guardar la edición del registro.
-            this.Dispose(true);
             string IdCase = dbIdCase.Text;
             string query = "Update TR_OPTIMIZACION_AUTO_SCRIPT set NOMBRE_PROCEDIMIENTO=@detalle, blabla=@vertical, REGULARIZA=@activo, CONSULTA_SEL=@sqlQuery WHERE ID=IdCase";
             SqlCommand cmd = new SqlCommand(query, conn);

@@ -33,12 +33,12 @@ namespace AutoRepsol
         private void createCase(object sender, EventArgs e)
         {
             //TODO: Aquí va el código de guardado del nuevo caso
-           /* var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO, )";
+            var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO,VERTICAL, REGULARIZA, CONSULTA_SEL) VALUES(@detalle, @vertical, @activo, @consulta)";
             SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue( ,dbDetalle);
-            cmd.Parameters.AddWithValue( ,dbVertical);
-            cmd.Parameters.AddWithValue( ,dbActivo);
-            cmd.Parameters.AddWithValue( ,dbQuery);
+            cmd.Parameters.AddWithValue("@detalle" ,dbDetalle);
+            cmd.Parameters.AddWithValue("@vertical" ,dbVertical);
+            cmd.Parameters.AddWithValue("@activo" ,dbActivo);
+            cmd.Parameters.AddWithValue("@consulta" ,dbQuery);
             try 
             {
                 cmd.ExecuteNonQuery();
@@ -47,7 +47,7 @@ namespace AutoRepsol
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }*/
+            }
             this.Dispose(true);
         }
 

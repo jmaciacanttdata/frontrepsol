@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -52,19 +53,24 @@ namespace AutoRepsol
         private void ChargeData()
         {
             PrepareDataGridView();
+            var querycount = "SELECT COUNT(*) FROM TR_OPTIMIZACION_AUTO_SCRIPT";
+            SqlCommand command2 = new SqlCommand(querycount, conn);
+            var num = command2.ExecuteNonQuery();
+            if (num > 1)
+                MessageBox.Show("Hola");
 
             for (int i = 0; i < 1; i++)
             {
                 var query = "SELECT * FROM TR_OPTIMIZACION_AUTO_SCRIPT WHERE ID = 1";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataReader reader2 = cmd.ExecuteReader();
-                if (reader2.Read())
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    string Id = reader2["ID"].ToString();
-                    string detalle = reader2["NOMBRE_PROCEDIMIENTO"].ToString();
-                    string vertical = reader2["PARAM_SEL"].ToString();
-                    string activo = reader2["REGULARIZA"].ToString();
+                    string Id = reader["ID"].ToString();
+                    string detalle = reader["NOMBRE_PROCEDIMIENTO"].ToString();
+                    string vertical = reader["PARAM_SEL"].ToString();
+                    string activo = reader["REGULARIZA"].ToString();
                     dbData.Rows.Add(Id, vertical, detalle, activo);
 
                 }
