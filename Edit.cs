@@ -30,6 +30,10 @@ namespace AutoRepsol
         {
             //TODO: Aquí lanzamos la query para obtener los datos del registro
             //TODO: Aquí inyectamos en cada input del formulario su dato correspondiente
+            dbDetalle.Text = "SELECT NOMBRE_PRODECIMIENTO FROM TR_OPTIMIZACION_AUTO_SCRIP WHERE ID=IdCase";
+            dbVertical.Text = "SELECT ??? FROM TR_OPTIMIZACION_AUTO_SCRIP WHERE ID=IdCase";
+            dbActivo.Text = "SELECT REGULARIZA FROM TR_OPTIMIZACION_AUTO_SCRIP WHERE ID=IdCase";
+            dbQuery.Text = "SELECT CONSULTA_SEL FROM TR_OPTIMIZACION_AUTO_SCRIP WHERE ID=IdCase";
         }
 
         private void closeEditForm(object sender, EventArgs e)
@@ -41,6 +45,25 @@ namespace AutoRepsol
         {
             //TODO: Aquí va el código para guardar la edición del registro.
             this.Dispose(true);
+            string IdCase = dbIdCase.Text;
+            string query = "Update TR_OPTIMIZACION_AUTO_SCRIP set NOMBRE_PROCEDIMIENTO=@detalle, blabla=@vertical, REGULARIZA=@activo, CONSULTA_SEL=@sqlQuery WHERE ID=IdCase";
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.AddWithValue("@detalle", dbDetalle);
+            cmd.Parameters.AddWithValue("@vertical", dbVertical);
+            cmd.Parameters.AddWithValue("@activo", dbActivo);
+            cmd.Parameters.AddWithValue("@sqlQuery", dbQuery);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("El registro ha sido actualizado correctamente");
+                this.Dispose(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
