@@ -53,11 +53,14 @@ namespace AutoRepsol
         private void ChargeData()
         {
             PrepareDataGridView();
-            var query = "SELECT ID FROM TR_OPTIMIZACION_AUTO_SCRIPT";
-            //var query = "SELECT OS.ID, QV.VERTICAL, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA FROM TR_QUERY_VERTICAL QV INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery";
+            var query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery";
             SqlCommand command = new SqlCommand(query, conn);
             var data = command.ExecuteReader();
-            dbData.DataSource = data;
+            while(data.Read())
+            {
+                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), data.GetBoolean(3));
+            }
+            data.Close();
             /*dbData.Rows.Add("1", "Facturación", "Prueba 1", "Si");
             dbData.Rows.Add("2", "Facturación", "Prueba 2", "No");
             dbData.Rows.Add("3", "Backoffice", "Prueba 3", "Si");
