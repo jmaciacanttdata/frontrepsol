@@ -39,14 +39,15 @@
             label1 = new Label();
             dbDetalle = new TextBox();
             dbIdCase = new TextBox();
+            vScrollBar1 = new VScrollBar();
             SuspendLayout();
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(674, 419);
-            btnCancel.Margin = new Padding(3, 2, 3, 2);
+            btnCancel.Location = new Point(963, 698);
+            btnCancel.Margin = new Padding(4, 3, 4, 3);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(82, 22);
+            btnCancel.Size = new Size(117, 37);
             btnCancel.TabIndex = 19;
             btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = true;
@@ -54,10 +55,10 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(772, 419);
-            btnSave.Margin = new Padding(3, 2, 3, 2);
+            btnSave.Location = new Point(1103, 698);
+            btnSave.Margin = new Padding(4, 3, 4, 3);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(82, 22);
+            btnSave.Size = new Size(117, 37);
             btnSave.TabIndex = 18;
             btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = true;
@@ -65,28 +66,30 @@
             // 
             // dbQuery
             // 
-            dbQuery.Location = new Point(40, 183);
-            dbQuery.Margin = new Padding(3, 2, 3, 2);
+            dbQuery.Location = new Point(57, 305);
+            dbQuery.Margin = new Padding(4, 3, 4, 3);
             dbQuery.Multiline = true;
             dbQuery.Name = "dbQuery";
-            dbQuery.Size = new Size(814, 206);
+            dbQuery.Size = new Size(1161, 341);
             dbQuery.TabIndex = 17;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(40, 163);
+            label4.Location = new Point(57, 272);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(78, 15);
+            label4.Size = new Size(118, 25);
             label4.TabIndex = 16;
             label4.Text = "Consulta SQL";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(361, 94);
+            label3.Location = new Point(516, 157);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(41, 15);
+            label3.Size = new Size(62, 25);
             label3.TabIndex = 15;
             label3.Text = "Activo";
             // 
@@ -94,62 +97,73 @@
             // 
             dbActivo.FormattingEnabled = true;
             dbActivo.Items.AddRange(new object[] { "Si", "No" });
-            dbActivo.Location = new Point(362, 113);
-            dbActivo.Margin = new Padding(3, 2, 3, 2);
+            dbActivo.Location = new Point(517, 188);
+            dbActivo.Margin = new Padding(4, 3, 4, 3);
             dbActivo.Name = "dbActivo";
-            dbActivo.Size = new Size(133, 23);
+            dbActivo.Size = new Size(188, 33);
             dbActivo.TabIndex = 14;
             // 
             // dbVertical
             // 
             dbVertical.FormattingEnabled = true;
             dbVertical.Items.AddRange(new object[] { "BO - Backoffice", "FO - Frontoffice", "FA - Facturación", "PM - Pricing", "LO - Logística" });
-            dbVertical.Location = new Point(36, 113);
-            dbVertical.Margin = new Padding(3, 2, 3, 2);
+            dbVertical.Location = new Point(51, 188);
+            dbVertical.Margin = new Padding(4, 3, 4, 3);
             dbVertical.Name = "dbVertical";
-            dbVertical.Size = new Size(283, 23);
+            dbVertical.Size = new Size(403, 33);
             dbVertical.TabIndex = 13;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(35, 94);
+            label2.Location = new Point(50, 157);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(45, 15);
+            label2.Size = new Size(68, 25);
             label2.TabIndex = 12;
             label2.Text = "Vertical";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(32, 27);
+            label1.Location = new Point(46, 45);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(43, 15);
+            label1.Size = new Size(66, 25);
             label1.TabIndex = 11;
             label1.Text = "Detalle";
             // 
             // dbDetalle
             // 
-            dbDetalle.Location = new Point(32, 49);
-            dbDetalle.Margin = new Padding(3, 2, 3, 2);
+            dbDetalle.Location = new Point(46, 82);
+            dbDetalle.Margin = new Padding(4, 3, 4, 3);
             dbDetalle.Name = "dbDetalle";
-            dbDetalle.Size = new Size(822, 23);
+            dbDetalle.Size = new Size(1173, 31);
             dbDetalle.TabIndex = 10;
             // 
             // dbIdCase
             // 
-            dbIdCase.Location = new Point(554, 418);
+            dbIdCase.Location = new Point(791, 697);
+            dbIdCase.Margin = new Padding(4, 5, 4, 5);
             dbIdCase.Name = "dbIdCase";
-            dbIdCase.Size = new Size(100, 23);
+            dbIdCase.Size = new Size(141, 31);
             dbIdCase.TabIndex = 20;
             dbIdCase.Visible = false;
             // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Location = new Point(1193, 305);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(25, 341);
+            vScrollBar1.TabIndex = 21;
+            // 
             // Edit
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(886, 468);
+            ClientSize = new Size(1266, 780);
+            Controls.Add(vScrollBar1);
             Controls.Add(dbIdCase);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -162,6 +176,7 @@
             Controls.Add(label1);
             Controls.Add(dbDetalle);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Edit";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Edit";
@@ -182,5 +197,6 @@
         private Label label1;
         private TextBox dbDetalle;
         private TextBox dbIdCase;
+        private VScrollBar vScrollBar1;
     }
 }

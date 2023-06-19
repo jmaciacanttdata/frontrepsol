@@ -52,12 +52,27 @@ namespace AutoRepsol
         private void ChargeData()
         {
             PrepareDataGridView();
-            var query = "SELECT * FROM TR_OPTIMIZACION_AUTO_SCRIPT";
-            SqlCommand command = new SqlCommand(query, conn);
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dbData.DataSource = dt;
+
+            for (int i = 0; i < 1; i++)
+            {
+                var query = "SELECT * FROM TR_OPTIMIZACION_AUTO_SCRIPT WHERE ID = 1";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader2 = cmd.ExecuteReader();
+                if (reader2.Read())
+                {
+                    string Id = reader2["ID"].ToString();
+                    string detalle = reader2["NOMBRE_PROCEDIMIENTO"].ToString();
+                    string vertical = reader2["PARAM_SEL"].ToString();
+                    string activo = reader2["REGULARIZA"].ToString();
+                    dbData.Rows.Add(Id, vertical, detalle, activo);
+
+                }
+            }
+            //SqlDataAdapter da = new SqlDataAdapter(command);
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            //dbData.DataSource = dt;
             
 
             /*dbData.Rows.Add("1", "Facturación", "Prueba 1", "Si");

@@ -22,18 +22,37 @@ namespace AutoRepsol
             InitializeComponent();
             _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             dbIdCase.Text = IdCase.ToString();
+            //dbIdCase.Visible = true;
             conn = _conn;
             GetDataCase(IdCase);
+        }
+        private void InitializeMyScrollBar()
+        {
+            VScrollBar vScrollBar1 = new VScrollBar();
+            vScrollBar1.Dock = DockStyle.Right;
+            Controls.Add(vScrollBar1);
         }
 
         public void GetDataCase(int IdCase)
         {
             //TODO: Aquí lanzamos la query para obtener los datos del registro
             //TODO: Aquí inyectamos en cada input del formulario su dato correspondiente
-            dbDetalle.Text = "SELECT NOMBRE_PRODECIMIENTO FROM TR_OPTIMIZACION_AUTO_SCRIP WHERE ID=IdCase";
-            dbVertical.Text = "SELECT ??? FROM TR_OPTIMIZACION_AUTO_SCRIP WHERE ID=IdCase";
-            dbActivo.Text = "SELECT REGULARIZA FROM TR_OPTIMIZACION_AUTO_SCRIP WHERE ID=IdCase";
-            dbQuery.Text = "SELECT CONSULTA_SEL FROM TR_OPTIMIZACION_AUTO_SCRIP WHERE ID=IdCase";
+            var query = "SELECT * FROM TR_OPTIMIZACION_AUTO_SCRIPT WHERE ID=1";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                dbDetalle.Text = reader["NOMBRE_PROCEDIMIENTO"].ToString();
+                dbVertical.Text = reader["PARAM_SEL"].ToString();
+                if (dbVertical.Text == null || dbVertical.Text == "")
+                {
+                    dbVertical.Text = "Este campo es nulo";
+                }
+                dbActivo.Text = reader["REGULARIZA"].ToString();
+                dbQuery.Text = reader["CONSULTA_SEL"].ToString();
+                InitializeMyScrollBar();
+            }
         }
 
         private void closeEditForm(object sender, EventArgs e)
@@ -46,7 +65,7 @@ namespace AutoRepsol
             //TODO: Aquí va el código para guardar la edición del registro.
             this.Dispose(true);
             string IdCase = dbIdCase.Text;
-            string query = "Update TR_OPTIMIZACION_AUTO_SCRIP set NOMBRE_PROCEDIMIENTO=@detalle, blabla=@vertical, REGULARIZA=@activo, CONSULTA_SEL=@sqlQuery WHERE ID=IdCase";
+            string query = "Update TR_OPTIMIZACION_AUTO_SCRIPT set NOMBRE_PROCEDIMIENTO=@detalle, blabla=@vertical, REGULARIZA=@activo, CONSULTA_SEL=@sqlQuery WHERE ID=IdCase";
             SqlCommand cmd = new SqlCommand(query, conn);
 
             cmd.Parameters.AddWithValue("@detalle", dbDetalle);
