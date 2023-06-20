@@ -38,7 +38,7 @@ namespace AutoRepsol
         private void PrepareDataGridView()
         {
             dbData.Columns.Add("Id", "Id");
-            dbData.Columns.Add("Vertical", "Vertical");
+            dbData.Columns.Add("Regulariza", "Regulariza");
             dbData.Columns.Add("Detalle", "Detalle");
             dbData.Columns.Add("Detalle", "Activo");
 

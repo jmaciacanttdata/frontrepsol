@@ -33,13 +33,12 @@
             dbQuery = new TextBox();
             label4 = new Label();
             label3 = new Label();
-            dbActivo = new ComboBox();
+            dbRegulariza = new ComboBox();
             dbVertical = new ComboBox();
             label2 = new Label();
             label1 = new Label();
             dbDetalle = new TextBox();
             dbIdCase = new TextBox();
-            vScrollBar1 = new VScrollBar();
             SuspendLayout();
             // 
             // btnCancel
@@ -89,19 +88,19 @@
             label3.Location = new Point(516, 157);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(62, 25);
+            label3.Size = new Size(92, 25);
             label3.TabIndex = 15;
-            label3.Text = "Activo";
+            label3.Text = "Regulariza";
             // 
-            // dbActivo
+            // dbRegulariza
             // 
-            dbActivo.FormattingEnabled = true;
-            dbActivo.Items.AddRange(new object[] { "Si", "No" });
-            dbActivo.Location = new Point(517, 188);
-            dbActivo.Margin = new Padding(4, 3, 4, 3);
-            dbActivo.Name = "dbActivo";
-            dbActivo.Size = new Size(188, 33);
-            dbActivo.TabIndex = 14;
+            dbRegulariza.FormattingEnabled = true;
+            dbRegulariza.Items.AddRange(new object[] { "Si", "No" });
+            dbRegulariza.Location = new Point(517, 188);
+            dbRegulariza.Margin = new Padding(4, 3, 4, 3);
+            dbRegulariza.Name = "dbRegulariza";
+            dbRegulariza.Size = new Size(188, 33);
+            dbRegulariza.TabIndex = 14;
             // 
             // dbVertical
             // 
@@ -150,27 +149,19 @@
             dbIdCase.TabIndex = 20;
             dbIdCase.Visible = false;
             // 
-            // vScrollBar1
-            // 
-            vScrollBar1.Location = new Point(1193, 305);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(25, 341);
-            vScrollBar1.TabIndex = 21;
-            // 
             // Edit
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1266, 780);
-            Controls.Add(vScrollBar1);
             Controls.Add(dbIdCase);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(dbQuery);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(dbActivo);
+            Controls.Add(dbRegulariza);
             Controls.Add(dbVertical);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -191,12 +182,11 @@
         private TextBox dbQuery;
         private Label label4;
         private Label label3;
-        private ComboBox dbActivo;
+        private ComboBox dbRegulariza;
         private ComboBox dbVertical;
         private Label label2;
         private Label label1;
         private TextBox dbDetalle;
         private TextBox dbIdCase;
-        private VScrollBar vScrollBar1;
     }
 }

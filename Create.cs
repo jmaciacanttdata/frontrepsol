@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using AutoRepsol.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace AutoRepsol
             InitializeComponent();
             _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             conn = _conn;
+            GetDataSourceVertical(_conn);
         }
 
         private void closeCreateForm(object sender, EventArgs e)
@@ -30,16 +32,38 @@ namespace AutoRepsol
 
         }
 
+        public void GetDataSourceVertical(SqlConnection conn)
+        {
+            string query = "SELECT Id, Vertical FROM TR_VERTICAL ORDER BY Id ASC;";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            using (var reader = cmd.ExecuteReader())
+            {
+                List<IdValue> ItemsVertical = new List<IdValue>();
+                while (reader.Read())
+                {
+                    IdValue item = new IdValue();
+                    item.Id = System.Convert.ToInt32(reader["Id"]);
+                    item.Value = reader["Vertical"].ToString();
+                    ItemsVertical.Add(item);
+                }
+                dbVertical.DataSource = ItemsVertical;
+                dbVertical.DisplayMember = "Value";
+                dbVertical.ValueMember = "Id";
+
+            };
+        }
+
         private void createCase(object sender, EventArgs e)
         {
             //TODO: Aquí va el código de guardado del nuevo caso
-            var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO,VERTICAL, REGULARIZA, CONSULTA_SEL) VALUES(@detalle, @vertical @activo, @consulta)";
+            var queryVertical = "insert into TR_VERTICAL() VALUES ";
+            var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO, REGULARIZA, CONSULTA_SEL) VALUES(@detalle, @activo, @consulta)";
             SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@detalle" ,dbDetalle);
-            cmd.Parameters.AddWithValue("@vertical" ,dbVertical);
-            cmd.Parameters.AddWithValue("@activo" ,dbActivo);
-            cmd.Parameters.AddWithValue("@consulta" ,dbQuery);
-            try 
+            cmd.Parameters.AddWithValue("@detalle", dbDetalle);
+            cmd.Parameters.AddWithValue("@vertical", dbVertical);
+            cmd.Parameters.AddWithValue("@regulariza", dbRegulariza);
+            cmd.Parameters.AddWithValue("@consulta", dbQuery);
+            try
             {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se ha guardado la consulta correctamente");
@@ -75,5 +99,5 @@ namespace AutoRepsol
                 LineNumberTextBox.Text += i + 1 + "\n";
             }
         }*/
-        }
     }
+}

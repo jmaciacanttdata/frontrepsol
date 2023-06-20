@@ -32,7 +32,7 @@
             label1 = new Label();
             label2 = new Label();
             dbVertical = new ComboBox();
-            dbActivo = new ComboBox();
+            dbRegulariza = new ComboBox();
             label3 = new Label();
             label4 = new Label();
             btnSave = new Button();
@@ -42,26 +42,29 @@
             // 
             // dbDetalle
             // 
-            dbDetalle.Location = new Point(23, 69);
+            dbDetalle.Location = new Point(29, 86);
+            dbDetalle.Margin = new Padding(4);
             dbDetalle.Name = "dbDetalle";
-            dbDetalle.Size = new Size(939, 27);
+            dbDetalle.Size = new Size(1173, 31);
             dbDetalle.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(23, 40);
+            label1.Location = new Point(29, 50);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(57, 20);
+            label1.Size = new Size(66, 25);
             label1.TabIndex = 1;
             label1.Text = "Detalle";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(26, 129);
+            label2.Location = new Point(32, 161);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(58, 20);
+            label2.Size = new Size(68, 25);
             label2.TabIndex = 2;
             label2.Text = "Vertical";
             // 
@@ -69,43 +72,48 @@
             // 
             dbVertical.FormattingEnabled = true;
             dbVertical.Items.AddRange(new object[] { "BO - Backoffice", "FO - Frontoffice", "FA - Facturación", "PM - Pricing", "LO - Logística" });
-            dbVertical.Location = new Point(27, 155);
+            dbVertical.Location = new Point(34, 194);
+            dbVertical.Margin = new Padding(4);
             dbVertical.Name = "dbVertical";
-            dbVertical.Size = new Size(323, 28);
+            dbVertical.Size = new Size(403, 33);
             dbVertical.TabIndex = 3;
             // 
-            // dbActivo
+            // dbRegulariza
             // 
-            dbActivo.FormattingEnabled = true;
-            dbActivo.Items.AddRange(new object[] { "Si", "No" });
-            dbActivo.Location = new Point(400, 155);
-            dbActivo.Name = "dbActivo";
-            dbActivo.Size = new Size(151, 28);
-            dbActivo.TabIndex = 4;
+            dbRegulariza.FormattingEnabled = true;
+            dbRegulariza.Items.AddRange(new object[] { "Si", "No" });
+            dbRegulariza.Location = new Point(500, 194);
+            dbRegulariza.Margin = new Padding(4);
+            dbRegulariza.Name = "dbRegulariza";
+            dbRegulariza.Size = new Size(188, 33);
+            dbRegulariza.TabIndex = 4;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(399, 129);
+            label3.Location = new Point(499, 161);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(51, 20);
+            label3.Size = new Size(92, 25);
             label3.TabIndex = 5;
-            label3.Text = "Activo";
+            label3.Text = "Regulariza";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 221);
+            label4.Location = new Point(40, 276);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(96, 20);
+            label4.Size = new Size(118, 25);
             label4.TabIndex = 6;
             label4.Text = "Consulta SQL";
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(869, 563);
+            btnSave.Location = new Point(1086, 704);
+            btnSave.Margin = new Padding(4);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
+            btnSave.Size = new Size(118, 36);
             btnSave.TabIndex = 8;
             btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = true;
@@ -113,9 +121,10 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(757, 563);
+            btnCancel.Location = new Point(946, 704);
+            btnCancel.Margin = new Padding(4);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
+            btnCancel.Size = new Size(118, 36);
             btnCancel.TabIndex = 9;
             btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = true;
@@ -124,32 +133,34 @@
             // dbQuery
             // 
             dbQuery.BorderStyle = BorderStyle.None;
-            dbQuery.Location = new Point(32, 244);
+            dbQuery.Location = new Point(40, 305);
+            dbQuery.Margin = new Padding(4);
             dbQuery.Name = "dbQuery";
-            dbQuery.Size = new Size(930, 294);
+            dbQuery.Size = new Size(1162, 368);
             dbQuery.TabIndex = 10;
             dbQuery.Text = "";
             // 
             // Create
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1013, 624);
+            ClientSize = new Size(1266, 780);
             Controls.Add(dbQuery);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(dbActivo);
+            Controls.Add(dbRegulariza);
             Controls.Add(dbVertical);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dbDetalle);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4);
             Name = "Create";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Create";
+            Text = "Regulariza";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -160,7 +171,7 @@
         private Label label1;
         private Label label2;
         private ComboBox dbVertical;
-        private ComboBox dbActivo;
+        private ComboBox dbRegulariza;
         private Label label3;
         private Label label4;
         private Button btnSave;
