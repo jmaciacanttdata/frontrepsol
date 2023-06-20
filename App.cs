@@ -165,10 +165,9 @@ namespace AutoRepsol
                 {
                     //TODO: Lanzar la query para eliminar el registro con id=caseId
                     int selectedrowindex = dbData.SelectedCells[0].RowIndex;
-                    var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where id = @selectedrowindex";
+                    var query = "delete from TR_QUERY_VERTICAL where IdQuery = @selectedrowindex";
                     SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@ID", selectedrowindex);
-                    try
+                    cmd.Parameters.AddWithValue("@IdQuery", selectedrowindex);                    try
                     {
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("El registro ha sido eliminado correctamente.", "Borrado de Registros");

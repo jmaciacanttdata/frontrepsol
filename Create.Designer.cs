@@ -38,6 +38,8 @@
             btnSave = new Button();
             btnCancel = new Button();
             dbQuery = new RichTextBox();
+            dbTipo = new ComboBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // dbDetalle
@@ -140,12 +142,32 @@
             dbQuery.TabIndex = 10;
             dbQuery.Text = "";
             // 
+            // dbTipo
+            // 
+            dbTipo.FormattingEnabled = true;
+            dbTipo.Items.AddRange(new object[] { "Logs General", "Riesgos", "Riesgos Tarde", "Riesgos Tarde Viernes", "Riesgos Mañana Sabado", "Riesgos Tarde Sabado", "Pre Bajada", "Facturacion", "Precios", "Otros", "Resultados KPIS", "Fletamentos", "Demoras" });
+            dbTipo.Location = new Point(757, 194);
+            dbTipo.Name = "dbTipo";
+            dbTipo.Size = new Size(386, 33);
+            dbTipo.TabIndex = 11;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(757, 161);
+            label5.Name = "label5";
+            label5.Size = new Size(97, 25);
+            label5.TabIndex = 12;
+            label5.Text = "Tipo Script";
+            // 
             // Create
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1266, 780);
+            Controls.Add(label5);
+            Controls.Add(dbTipo);
             Controls.Add(dbQuery);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -177,5 +199,7 @@
         private Button btnSave;
         private Button btnCancel;
         private RichTextBox dbQuery;
+        private ComboBox dbTipo;
+        private Label label5;
     }
 }
