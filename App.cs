@@ -47,7 +47,6 @@ namespace AutoRepsol
             dbData.Columns[2].Width = (int)(dbData.Width * 0.6);
             dbData.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dbData.Columns[3].Width = (int)(dbData.Width * 0.1);
-
         }
 
         public void ChargeData()
@@ -61,10 +60,6 @@ namespace AutoRepsol
                 dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), data.GetBoolean(3));
             }
             data.Close();
-            /*dbData.Rows.Add("1", "Facturación", "Prueba 1", "Si");
-            dbData.Rows.Add("2", "Facturación", "Prueba 2", "No");
-            dbData.Rows.Add("3", "Backoffice", "Prueba 3", "Si");
-            dbData.Rows.Add("4", "Logística", "Prueba 3", "Si");*/
         }
 
         private void CLoseApp(object sender, FormClosingEventArgs e)
@@ -158,12 +153,16 @@ namespace AutoRepsol
         private void deleteCase(object sender, EventArgs e)
         {
             bool active = (bool)dbData.SelectedCells[3].Value;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             if (!active)
             {
                 var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar el registro seleccionado?", "Borrado de Registros", MessageBoxButtons.YesNo);
                 if (confirmDelete == DialogResult.Yes)
                 {
+<<<<<<< Updated upstream
                     //TODO: Lanzar la query para eliminar el registro con id=caseId
                     int selectedId = (int)dbData.SelectedCells[0].Value;
                     var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
@@ -172,12 +171,25 @@ namespace AutoRepsol
                     SqlCommand cmdVertical = new SqlCommand(queryVertical, conn);
                     cmd.Parameters.AddWithValue("@Id", selectedId);
                     cmdVertical.Parameters.AddWithValue("Id", selectedId);
+=======
+                    int SelectedId = (int)dbData.SelectedCells[0].Value;
+                    var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
+                    var query2 = "DELETE FROM TR_QUERY_VERTICAL WHERE IdQuery = @Id";
+
+                    SqlCommand command = new SqlCommand(query2, conn);
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", SelectedId);
+                    command.Parameters.AddWithValue("@Id", SelectedId);
+>>>>>>> Stashed changes
                     try
                     {
+                        command.ExecuteNonQuery();
                         cmd.ExecuteNonQuery();
                         cmdVertical.ExecuteNonQuery();
                         ChargeData();
                         MessageBox.Show("El registro ha sido eliminado correctamente.", "Borrado de Registros");
+                        ChargeData();
                     }
                     catch (Exception ex)
                     {

@@ -39,6 +39,8 @@
             label1 = new Label();
             dbDetalle = new TextBox();
             dbIdCase = new TextBox();
+            dbTipo = new ComboBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // btnCancel
@@ -149,12 +151,32 @@
             dbIdCase.TabIndex = 20;
             dbIdCase.Visible = false;
             // 
+            // dbTipo
+            // 
+            dbTipo.DropDownWidth = 386;
+            dbTipo.FormattingEnabled = true;
+            dbTipo.Location = new Point(782, 188);
+            dbTipo.Name = "dbTipo";
+            dbTipo.Size = new Size(386, 33);
+            dbTipo.TabIndex = 21;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(782, 157);
+            label5.Name = "label5";
+            label5.Size = new Size(97, 25);
+            label5.TabIndex = 22;
+            label5.Text = "Tipo Script";
+            // 
             // Edit
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1266, 780);
+            Controls.Add(label5);
+            Controls.Add(dbTipo);
             Controls.Add(dbIdCase);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -188,5 +210,7 @@
         private Label label1;
         private TextBox dbDetalle;
         private TextBox dbIdCase;
+        private ComboBox dbTipo;
+        private Label label5;
     }
 }

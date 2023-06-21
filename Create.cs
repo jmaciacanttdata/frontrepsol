@@ -25,8 +25,6 @@ namespace AutoRepsol
             conn = _conn;
             GetDataSourceVertical(_conn);
             GetDataSourceType(_conn);
-
-
         }
 
         private void closeCreateForm(object sender, EventArgs e)
@@ -82,13 +80,17 @@ namespace AutoRepsol
             var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO,ID_TIPO_SCRIPT ,REGULARIZA, CONSULTA_SEL) VALUES(@detalle,@tipo ,@regulariza, @consulta); ";
             var insertVertical = "insert into TR_QUERY_VERTICAL (IdQuery, IdVertical) VALUES (@pkOptimizacion, @pkVertical)";
             var SelectIdOpt = "Select TOP 1 ID from TR_OPTIMIZACION_AUTO_SCRIPT ORDER BY ID DESC";
+
             int idTipo = int.Parse(dbTipo.SelectedValue.ToString());
             int idVertical= int.Parse(dbVertical.SelectedValue.ToString());
+
             SqlCommand cmd = new SqlCommand(query, conn);
             SqlCommand cmdInsertVertical = new SqlCommand(insertVertical, conn);
             SqlCommand cmdSelectIdOpt = new SqlCommand(SelectIdOpt, conn);
+
             cmd.Parameters.AddWithValue("@detalle", dbDetalle.Text);
             cmd.Parameters.AddWithValue("@tipo", idTipo);
+
             if (dbRegulariza.SelectedIndex == 1)
                 cmd.Parameters.AddWithValue("@regulariza", false);
             else
@@ -109,8 +111,6 @@ namespace AutoRepsol
                 MessageBox.Show(ex.Message);
             }
             this.Dispose(true);
-            
-
         }
 
         /*public void AddLineNumbers()
