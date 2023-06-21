@@ -90,14 +90,10 @@ namespace AutoRepsol
             cmd.Parameters.AddWithValue("@detalle", dbDetalle.Text);
             cmd.Parameters.AddWithValue("@tipo", idTipo);
             if (dbRegulariza.SelectedIndex == 1)
-            {
                 cmd.Parameters.AddWithValue("@regulariza", false);
-            }
             else
-            {
                 cmd.Parameters.AddWithValue("@regulariza", true);
 
-            }
             cmd.Parameters.AddWithValue("@consulta", dbQuery.Text);
             try
             {
