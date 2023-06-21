@@ -131,9 +131,16 @@ namespace AutoRepsol
         private void GetItemData(object sender, DataGridViewCellEventArgs e)
         {
             int idRowSelected = e.RowIndex;
-            string IdRegistro = dbData.Rows[idRowSelected].Cells[0].Value.ToString();
-            var editForm = new Edit(System.Convert.ToInt32(IdRegistro), conn);
-            editForm.Show();
+            try
+            {
+                string IdRegistro = dbData.Rows[idRowSelected].Cells[0].Value.ToString();
+                var editForm = new Edit(System.Convert.ToInt32(IdRegistro), conn);
+                editForm.Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Registro no válido");
+            }
         }
 
         private void openCreateForm(object sender, EventArgs e)

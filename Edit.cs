@@ -101,15 +101,21 @@ namespace AutoRepsol
             string IdCase = dbIdCase.Text;
             string query = String.Format("UPDATE TR_OPTIMIZACION_AUTO_SCRIPT set NOMBRE_PROCEDIMIENTO=@detalle, REGULARIZA=@activo, CONSULTA_SEL=@sqlQuery, ID_TIPO_SCRIPT=@type WHERE ID={0}", IdCase);
             string queryVertical = String.Format("UPDATE TR_QUERY_VERTICAL SET IdVertical = @vertical WHERE IdQuery = {0}", IdCase);
-            
+            bool active = false;
             SqlCommand cmd = new SqlCommand(query, conn);
             SqlCommand command = new SqlCommand(queryVertical, conn);
 
             cmd.Parameters.AddWithValue("@detalle", dbDetalle.Text);
             command.Parameters.AddWithValue("@vertical", dbVertical.SelectedValue);
-            cmd.Parameters.AddWithValue("@activo", dbRegulariza.Text);
+            if (dbRegulariza.Text == "Si")
+            {
+                active = true;
+            }
+            cmd.Parameters.AddWithValue("@activo", active);
             cmd.Parameters.AddWithValue("@type", dbTipo.SelectedValue);
             cmd.Parameters.AddWithValue("@sqlQuery", dbQuery.Text);
+
+
 
             try
             {
