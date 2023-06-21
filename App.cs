@@ -153,43 +153,28 @@ namespace AutoRepsol
         private void deleteCase(object sender, EventArgs e)
         {
             bool active = (bool)dbData.SelectedCells[3].Value;
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
+
             if (!active)
             {
                 var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar el registro seleccionado?", "Borrado de Registros", MessageBoxButtons.YesNo);
                 if (confirmDelete == DialogResult.Yes)
                 {
-<<<<<<< Updated upstream
                     //TODO: Lanzar la query para eliminar el registro con id=caseId
                     int selectedId = (int)dbData.SelectedCells[0].Value;
                     var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
                     var queryVertical = "DELETE FROM TR_QUERY_VERTICAL WHERE IdQuery = @Id";
+
                     SqlCommand cmd = new SqlCommand(query, conn);
                     SqlCommand cmdVertical = new SqlCommand(queryVertical, conn);
+
                     cmd.Parameters.AddWithValue("@Id", selectedId);
                     cmdVertical.Parameters.AddWithValue("Id", selectedId);
-=======
-                    int SelectedId = (int)dbData.SelectedCells[0].Value;
-                    var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
-                    var query2 = "DELETE FROM TR_QUERY_VERTICAL WHERE IdQuery = @Id";
-
-                    SqlCommand command = new SqlCommand(query2, conn);
-                    SqlCommand cmd = new SqlCommand(query, conn);
-
-                    cmd.Parameters.AddWithValue("@Id", SelectedId);
-                    command.Parameters.AddWithValue("@Id", SelectedId);
->>>>>>> Stashed changes
                     try
                     {
-                        command.ExecuteNonQuery();
                         cmd.ExecuteNonQuery();
                         cmdVertical.ExecuteNonQuery();
-                        ChargeData();
                         MessageBox.Show("El registro ha sido eliminado correctamente.", "Borrado de Registros");
-                        ChargeData();
                     }
                     catch (Exception ex)
                     {
