@@ -26,8 +26,8 @@ namespace AutoRepsol
             dbIdCase.Text = IdCase.ToString();
             conn = _conn;
             GetDataSourceVertical(_conn);
-            GetDataCase(IdCase);
             GetDataSourceType(_conn);
+            GetDataCase(IdCase);
         }
 
         public void GetDataSourceType(SqlConnection conn)

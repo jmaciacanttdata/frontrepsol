@@ -35,29 +35,39 @@ namespace AutoRepsol
             ChargeData();
         }
 
+        public void RefreshData()
+        {
+            dbData.Rows.Clear();
+            dbData.Columns.Clear();
+            ChargeData();
+            MessageBox.Show("Se ha actualizado el registro");
+        }
+
         private void PrepareDataGridView()
         {
             dbData.Columns.Add("Id", "Id");
-            dbData.Columns.Add("Regulariza", "Regulariza");
+            dbData.Columns.Add("Vertical", "Vertical");
             dbData.Columns.Add("Detalle", "Detalle");
-            dbData.Columns.Add("Detalle", "Activo");
+            dbData.Columns.Add("Regulariza", "Regulariza");
+            dbData.Columns.Add("Tipo Script", "Tipo Script");
 
             dbData.Columns[0].Width = (int)(dbData.Width * 0.1);
             dbData.Columns[1].Width = (int)(dbData.Width * 0.2);
-            dbData.Columns[2].Width = (int)(dbData.Width * 0.6);
+            dbData.Columns[2].Width = (int)(dbData.Width * 0.45);
             dbData.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dbData.Columns[3].Width = (int)(dbData.Width * 0.1);
+            dbData.Columns[4].Width = (int)(dbData.Width * 0.15);
         }
 
         public void ChargeData()
         {
             PrepareDataGridView();
-            var query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery";
+            var query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA, OTS.TIPO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
             SqlCommand command = new SqlCommand(query, conn);
             var data = command.ExecuteReader();
             while (data.Read())
             {
-                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), data.GetBoolean(3));
+                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), data.GetBoolean(3), data.GetString(4));
             }
             data.Close();
         }
@@ -193,6 +203,7 @@ namespace AutoRepsol
             dbData.Rows.Clear();
             dbData.Columns.Clear();
             ChargeData();
+            MessageBox.Show("Se ha actualizado el registro");
         }
     }
 }
