@@ -190,8 +190,9 @@ namespace AutoRepsol
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            /*dbData.Rows.Clear();
-            ChargeData();*/
+            dbData.Rows.Clear();
+            dbData.Columns.Clear();
+            ChargeData();
         }
     }
 }
