@@ -55,7 +55,7 @@ namespace AutoRepsol
             var query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery";
             SqlCommand command = new SqlCommand(query, conn);
             var data = command.ExecuteReader();
-            while(data.Read())
+            while (data.Read())
             {
                 dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), data.GetBoolean(3));
             }
@@ -186,6 +186,12 @@ namespace AutoRepsol
             }
             else
                 MessageBox.Show("El registro no se puede eliminar ya que está en estado activo");
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            /*dbData.Rows.Clear();
+            ChargeData();*/
         }
     }
 }

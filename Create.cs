@@ -26,7 +26,7 @@ namespace AutoRepsol
             GetDataSourceVertical(_conn);
             GetDataSourceType(_conn);
         }
-
+        
         private void closeCreateForm(object sender, EventArgs e)
         {
             this.Dispose();

@@ -40,6 +40,7 @@
             label2 = new Label();
             lblUserName = new Label();
             label1 = new Label();
+            btnRefresh = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dbData).BeginInit();
@@ -48,6 +49,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnRefresh);
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(btnCreate);
             panel1.Dock = DockStyle.Top;
@@ -60,10 +62,10 @@
             // btnDelete
             // 
             btnDelete.Enabled = false;
-            btnDelete.Location = new Point(130, 10);
+            btnDelete.Location = new Point(130, 11);
             btnDelete.Margin = new Padding(4, 5, 4, 5);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(108, 39);
+            btnDelete.Size = new Size(108, 34);
             btnDelete.TabIndex = 1;
             btnDelete.Text = "Eliminar";
             btnDelete.UseVisualStyleBackColor = true;
@@ -180,6 +182,16 @@
             label1.TabIndex = 0;
             label1.Text = "User:";
             // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(255, 12);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(112, 33);
+            btnRefresh.TabIndex = 2;
+            btnRefresh.Text = "Actualizar";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // App
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -217,5 +229,6 @@
         private Button btnDelete;
         private Label lblCatalog;
         private Label label3;
+        private Button btnRefresh;
     }
 }
