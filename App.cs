@@ -40,7 +40,7 @@ namespace AutoRepsol
             dbData.Rows.Clear();
             dbData.Columns.Clear();
             ChargeData();
-            MessageBox.Show("Se ha actualizado el registro");
+            MessageBox.Show("Se han actualizado las consultas");
         }
 
         private void PrepareDataGridView()
@@ -169,48 +169,50 @@ namespace AutoRepsol
 
         private void deleteCase(object sender, EventArgs e)
         {
-            bool active = (bool)dbData.SelectedCells[3].Value;
-
-
-            if (!active)
+            try
             {
-                var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar el registro seleccionado?", "Borrado de Registros", MessageBoxButtons.YesNo);
-                if (confirmDelete == DialogResult.Yes)
+                bool active = (bool)dbData.SelectedCells[3].Value;
+                if (!active)
                 {
-                    //TODO: Lanzar la query para eliminar el registro con id=caseId
-                    int selectedId = (int)dbData.SelectedCells[0].Value;
-                    var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
-                    var queryVertical = "DELETE FROM TR_QUERY_VERTICAL WHERE IdQuery = @Id";
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    SqlCommand cmdVertical = new SqlCommand(queryVertical, conn);
-
-                    cmd.Parameters.AddWithValue("@Id", selectedId);
-                    cmdVertical.Parameters.AddWithValue("Id", selectedId);
-                    try
+                    var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar la consulta seleccionada?", "Borrado de Consultas", MessageBoxButtons.YesNo);
+                    if (confirmDelete == DialogResult.Yes)
                     {
-                        cmd.ExecuteNonQuery();
-                        cmdVertical.ExecuteNonQuery();
-                        MessageBox.Show("El registro ha sido eliminado correctamente.", "Borrado de Registros");
+                        //TODO: Lanzar la query para eliminar el registro con id=caseId
+                        int selectedId = (int)dbData.SelectedCells[0].Value;
+                        var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
+                        var queryVertical = "DELETE FROM TR_QUERY_VERTICAL WHERE IdQuery = @Id";
+
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        SqlCommand cmdVertical = new SqlCommand(queryVertical, conn);
+
+                        cmd.Parameters.AddWithValue("@Id", selectedId);
+                        cmdVertical.Parameters.AddWithValue("Id", selectedId);
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            cmdVertical.ExecuteNonQuery();
+                            MessageBox.Show("La consulta ha sido eliminada correctamente.", "Borrado de Consultas");
+                            RefreshData();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    else
+                        this.Dispose();
                 }
                 else
-                    this.Dispose();
+                    MessageBox.Show("La consulta no se puede eliminar ya que está en estado activo");
             }
-            else
-                MessageBox.Show("El registro no se puede eliminar ya que está en estado activo");
+            catch(Exception ex)
+            { MessageBox.Show("Consulta no válida"); }
+
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            dbData.Rows.Clear();
-            dbData.Columns.Clear();
-            ChargeData();
-            MessageBox.Show("Se ha actualizado el registro");
+            RefreshData();
         }
     }
 }
