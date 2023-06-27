@@ -40,7 +40,6 @@
             label2 = new Label();
             lblUserName = new Label();
             label1 = new Label();
-            btnRefresh = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dbData).BeginInit();
@@ -49,7 +48,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnRefresh);
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(btnCreate);
             panel1.Dock = DockStyle.Top;
@@ -182,16 +180,6 @@
             label1.TabIndex = 0;
             label1.Text = "User:";
             // 
-            // btnRefresh
-            // 
-            btnRefresh.Location = new Point(255, 12);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(112, 33);
-            btnRefresh.TabIndex = 2;
-            btnRefresh.Text = "Actualizar";
-            btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += btnRefresh_Click;
-            // 
             // App
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -229,6 +217,5 @@
         private Button btnDelete;
         private Label lblCatalog;
         private Label label3;
-        private Button btnRefresh;
     }
 }

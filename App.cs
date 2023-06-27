@@ -137,7 +137,7 @@ namespace AutoRepsol
                 editForm.FormClosed += new FormClosedEventHandler(RefreshData);
                 editForm.Show();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Registro no válido");
             }
@@ -205,14 +205,9 @@ namespace AutoRepsol
                 else
                     MessageBox.Show("La consulta no se puede eliminar ya que está en estado activo");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { MessageBox.Show("Consulta no válida"); }
 
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            RefreshData(sender, e);
         }
     }
 }
