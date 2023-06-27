@@ -22,6 +22,7 @@ namespace AutoRepsol
         string caseId = null;
         string caseName = null;
         SqlConnection conn;
+        string userDB;
         private readonly IConfiguration _configuration;
 
         public App(string dbUser, SqlConnection _conn)
@@ -29,18 +30,18 @@ namespace AutoRepsol
             InitializeComponent();
             _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             lblUserName.Text = dbUser;
+            userDB = dbUser;
             lblServer.Text = _configuration.GetSection("dbServer").Value;
             lblCatalog.Text = _configuration.GetSection("dbDataBase").Value;
             conn = _conn;
             ChargeData();
         }
 
-        public void RefreshData()
+        public void RefreshData(object sender, EventArgs e)
         {
             dbData.Rows.Clear();
             dbData.Columns.Clear();
             ChargeData();
-            MessageBox.Show("Se han actualizado las consultas");
         }
 
         private void PrepareDataGridView()
@@ -107,9 +108,7 @@ namespace AutoRepsol
                 message = "¿Está seguro de querer cerrar la sesión del usuario?";
             string caption = "AutoRepsol";
 
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
                 return true;
@@ -134,7 +133,8 @@ namespace AutoRepsol
             try
             {
                 string IdRegistro = dbData.Rows[idRowSelected].Cells[0].Value.ToString();
-                var editForm = new Edit(System.Convert.ToInt32(IdRegistro), conn);
+                var editForm = new Edit(System.Convert.ToInt32(IdRegistro), userDB, conn);
+                editForm.FormClosed += new FormClosedEventHandler(RefreshData);
                 editForm.Show();
             }
             catch(Exception ex)
@@ -145,7 +145,7 @@ namespace AutoRepsol
 
         private void openCreateForm(object sender, EventArgs e)
         {
-            var createForm = new Create(conn);
+            var createForm = new Create(userDB, conn);
             createForm.Show();
         }
 
@@ -192,7 +192,7 @@ namespace AutoRepsol
                             cmd.ExecuteNonQuery();
                             cmdVertical.ExecuteNonQuery();
                             MessageBox.Show("La consulta ha sido eliminada correctamente.", "Borrado de Consultas");
-                            RefreshData();
+                            RefreshData(sender, e);
                         }
                         catch (Exception ex)
                         {
@@ -212,7 +212,7 @@ namespace AutoRepsol
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            RefreshData();
+            RefreshData(sender, e);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoRepsol.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,13 +18,15 @@ namespace AutoRepsol
     public partial class Edit : Form
     {
         SqlConnection conn;
+        string userDB;
         private readonly IConfiguration _configuration;
 
-        public Edit(int IdCase, SqlConnection _conn)
+        public Edit(int IdCase, string dbUser, SqlConnection _conn)
         {
             InitializeComponent();
             _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             dbIdCase.Text = IdCase.ToString();
+            userDB = dbUser;
             conn = _conn;
             GetDataSourceVertical(_conn);
             GetDataSourceType(_conn);
@@ -94,40 +97,67 @@ namespace AutoRepsol
         {
             this.Dispose();
         }
+        public bool ValidateForm()
+        {
+            bool isCompleted = true;
+            if (String.IsNullOrEmpty(dbDetalle.Text))
+                isCompleted = false;
+            else if (dbVertical.SelectedItem == null)
+                isCompleted = false;
+            else if (dbRegulariza.SelectedItem == null)
+                isCompleted = false;
+            else if (dbTipo.SelectedItem == null)
+                isCompleted = false;
+            else if (String.IsNullOrEmpty(dbQuery.Text))
+                isCompleted = false;
+
+            //TODO: Comprobar que todos los campos están rellenos y encaso de no estar almenos 1, poner el flag a FALSE
+
+            return isCompleted;
+        }
 
         private void saveEditCase(object sender, EventArgs e)
         {
-            //TODO: Aquí va el código para guardar la edición del registro.
-            string IdCase = dbIdCase.Text;
-            string query = String.Format("UPDATE TR_OPTIMIZACION_AUTO_SCRIPT set NOMBRE_PROCEDIMIENTO=@detalle, REGULARIZA=@activo, CONSULTA_SEL=@sqlQuery, ID_TIPO_SCRIPT=@type WHERE ID={0}", IdCase);
-            string queryVertical = String.Format("UPDATE TR_QUERY_VERTICAL SET IdVertical = @vertical WHERE IdQuery = {0}", IdCase);
-            bool active = false;
-            SqlCommand cmd = new SqlCommand(query, conn);
-            SqlCommand command = new SqlCommand(queryVertical, conn);
-
-            cmd.Parameters.AddWithValue("@detalle", dbDetalle.Text);
-            command.Parameters.AddWithValue("@vertical", dbVertical.SelectedValue);
-            if (dbRegulariza.Text == "Si")
+            if (ValidateForm())
             {
-                active = true;
-            }
-            cmd.Parameters.AddWithValue("@activo", active);
-            cmd.Parameters.AddWithValue("@type", dbTipo.SelectedValue);
-            cmd.Parameters.AddWithValue("@sqlQuery", dbQuery.Text);
+                //TODO: Aquí va el código para guardar la edición del registro.
+                string IdCase = dbIdCase.Text;
+                string query = String.Format("UPDATE TR_OPTIMIZACION_AUTO_SCRIPT set NOMBRE_PROCEDIMIENTO=@detalle, REGULARIZA=@activo, CONSULTA_SEL=@sqlQuery, ID_TIPO_SCRIPT=@type WHERE ID={0}", IdCase);
+                string queryVertical = String.Format("UPDATE TR_QUERY_VERTICAL SET IdVertical = @vertical WHERE IdQuery = {0}", IdCase);
+                bool active = false;
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlCommand command = new SqlCommand(queryVertical, conn);
+
+                cmd.Parameters.AddWithValue("@detalle", dbDetalle.Text);
+                command.Parameters.AddWithValue("@vertical", dbVertical.SelectedValue);
+                if (dbRegulariza.Text == "Si")
+                {
+                    active = true;
+                }
+                cmd.Parameters.AddWithValue("@activo", active);
+                cmd.Parameters.AddWithValue("@type", dbTipo.SelectedValue);
+                cmd.Parameters.AddWithValue("@sqlQuery", dbQuery.Text);
 
 
 
-            try
-            {
-                command.ExecuteNonQuery();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("El registro ha sido actualizado correctamente");
-                this.Dispose(true);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("El registro ha sido actualizado correctamente");
+
+                    var app = new App(userDB, conn);
+                    app.Show();
+                    this.Dispose(true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            else
+                MessageBox.Show("Debes rellenar todos los campos");
         }
     }
 }

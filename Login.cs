@@ -53,7 +53,6 @@ namespace AutoRepsol
                 isInitialize = true;
                 var app = new App(dbUserName, cnn);
                 app.Show();
-                MessageBox.Show("Se ha iniciado sesión como: " + dbUserName);
                 this.Hide();
             }
             catch (Exception ex)

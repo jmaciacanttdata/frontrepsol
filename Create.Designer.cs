@@ -178,7 +178,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dbDetalle);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "Create";
             StartPosition = FormStartPosition.CenterScreen;

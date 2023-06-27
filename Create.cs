@@ -16,20 +16,24 @@ namespace AutoRepsol
     public partial class Create : Form
     {
         SqlConnection conn;
+        string userDB;
         private readonly IConfiguration _configuration;
 
-        public Create(SqlConnection _conn)
+        public Create(string dbUser, SqlConnection _conn)
         {
             InitializeComponent();
             _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             conn = _conn;
+            userDB = dbUser;
             GetDataSourceVertical(_conn);
             GetDataSourceType(_conn);
+            dbVertical.SelectedItem = null;
+            dbTipo.SelectedItem = null;
         }
-        
+
         private void closeCreateForm(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Hide();
 
         }
 
@@ -76,41 +80,71 @@ namespace AutoRepsol
 
         private void createCase(object sender, EventArgs e)
         {
-            //TODO: Aquí va el código de guardado del nuevo caso
-            var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO,ID_TIPO_SCRIPT ,REGULARIZA, CONSULTA_SEL) VALUES(@detalle,@tipo ,@regulariza, @consulta); ";
-            var insertVertical = "insert into TR_QUERY_VERTICAL (IdQuery, IdVertical) VALUES (@pkOptimizacion, @pkVertical)";
-            var SelectIdOpt = "Select TOP 1 ID from TR_OPTIMIZACION_AUTO_SCRIPT ORDER BY ID DESC";
+            if (ValidateForm())
+            {
+                //TODO: Aquí va el código de guardado del nuevo caso
+                var query = "insert into TR_OPTIMIZACION_AUTO_SCRIPT (NOMBRE_PROCEDIMIENTO,ID_TIPO_SCRIPT ,REGULARIZA, CONSULTA_SEL) VALUES(@detalle,@tipo ,@regulariza, @consulta); ";
+                var insertVertical = "insert into TR_QUERY_VERTICAL (IdQuery, IdVertical) VALUES (@pkOptimizacion, @pkVertical)";
+                var SelectIdOpt = "Select TOP 1 ID from TR_OPTIMIZACION_AUTO_SCRIPT ORDER BY ID DESC";
 
-            int idTipo = int.Parse(dbTipo.SelectedValue.ToString());
-            int idVertical= int.Parse(dbVertical.SelectedValue.ToString());
+                int idTipo = int.Parse(dbTipo.SelectedValue.ToString());
+                int idVertical = int.Parse(dbVertical.SelectedValue.ToString());
 
-            SqlCommand cmd = new SqlCommand(query, conn);
-            SqlCommand cmdInsertVertical = new SqlCommand(insertVertical, conn);
-            SqlCommand cmdSelectIdOpt = new SqlCommand(SelectIdOpt, conn);
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlCommand cmdInsertVertical = new SqlCommand(insertVertical, conn);
+                SqlCommand cmdSelectIdOpt = new SqlCommand(SelectIdOpt, conn);
 
-            cmd.Parameters.AddWithValue("@detalle", dbDetalle.Text);
-            cmd.Parameters.AddWithValue("@tipo", idTipo);
+                cmd.Parameters.AddWithValue("@detalle", dbDetalle.Text);
+                cmd.Parameters.AddWithValue("@tipo", idTipo);
 
-            if (dbRegulariza.SelectedIndex == 1)
-                cmd.Parameters.AddWithValue("@regulariza", false);
+                if (dbRegulariza.SelectedItem == "No")
+                    cmd.Parameters.AddWithValue("@regulariza", false);
+                else
+                    cmd.Parameters.AddWithValue("@regulariza", true);
+
+                cmd.Parameters.AddWithValue("@consulta", dbQuery.Text);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    int pkOptimizacion = (int)cmdSelectIdOpt.ExecuteScalar();
+                    cmdInsertVertical.Parameters.AddWithValue("@pkOptimizacion", pkOptimizacion);
+                    cmdInsertVertical.Parameters.AddWithValue("@pkVertical", idVertical);
+                    cmdInsertVertical.ExecuteNonQuery();
+                    MessageBox.Show("Se ha guardado la consulta correctamente");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                var app = new App(userDB, conn);
+                app.Show();
+                this.Dispose(true);
+            }
             else
-                cmd.Parameters.AddWithValue("@regulariza", true);
+                MessageBox.Show("Debes rellenar todos los campos");
 
-            cmd.Parameters.AddWithValue("@consulta", dbQuery.Text);
-            try
-            {
-                cmd.ExecuteNonQuery();
-                int pkOptimizacion = (int)cmdSelectIdOpt.ExecuteScalar();
-                cmdInsertVertical.Parameters.AddWithValue("@pkOptimizacion", pkOptimizacion);
-                cmdInsertVertical.Parameters.AddWithValue("@pkVertical", idVertical);
-                cmdInsertVertical.ExecuteNonQuery();
-                MessageBox.Show("Se ha guardado la consulta correctamente");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            this.Dispose(true);
+        }
+
+
+
+        public bool ValidateForm()
+        {
+            bool isCompleted = true;
+            if (String.IsNullOrEmpty(dbDetalle.Text))
+                isCompleted = false;
+            else if (dbVertical.SelectedItem == null)
+                isCompleted = false;
+            else if (dbRegulariza.SelectedItem == null)
+                isCompleted = false;
+            else if (dbTipo.SelectedItem == null)
+                isCompleted = false;
+            else if (String.IsNullOrEmpty(dbQuery.Text))
+                isCompleted = false;
+
+            //TODO: Comprobar que todos los campos están rellenos y encaso de no estar almenos 1, poner el flag a FALSE
+
+            return isCompleted;
         }
 
         /*public void AddLineNumbers()
