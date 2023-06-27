@@ -102,12 +102,6 @@ namespace AutoRepsol
             bool isCompleted = true;
             if (String.IsNullOrEmpty(dbDetalle.Text))
                 isCompleted = false;
-            else if (dbVertical.SelectedItem == null)
-                isCompleted = false;
-            else if (dbRegulariza.SelectedItem == null)
-                isCompleted = false;
-            else if (dbTipo.SelectedItem == null)
-                isCompleted = false;
             else if (String.IsNullOrEmpty(dbQuery.Text))
                 isCompleted = false;
 
