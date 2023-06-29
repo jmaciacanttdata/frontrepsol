@@ -24,6 +24,7 @@ namespace AutoRepsol
         string caseName = null;
         SqlConnection conn;
         string userDB;
+        bool iniciate = false;
         private readonly IConfiguration _configuration;
 
         public App(string dbUser, SqlConnection _conn)
@@ -111,6 +112,7 @@ namespace AutoRepsol
             {
                 dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), data.GetBoolean(3), data.GetString(4));
             }
+            iniciate = true;
             data.Close();
         }
 
@@ -256,7 +258,11 @@ namespace AutoRepsol
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RefreshData(sender, e);
+
+            if (iniciate)
+            {
+                RefreshData(sender, e);
+            }
         }
     }
 }
