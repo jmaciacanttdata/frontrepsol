@@ -35,6 +35,7 @@ namespace AutoRepsol
             lblServer.Text = _configuration.GetSection("dbServer").Value;
             lblCatalog.Text = _configuration.GetSection("dbDataBase").Value;
             conn = _conn;
+            GetDataSourceVertical(conn);
             ChargeData();
         }
 
@@ -60,6 +61,36 @@ namespace AutoRepsol
             dbData.Columns[3].Width = (int)(dbData.Width * 0.1);
             dbData.Columns[4].Width = (int)(dbData.Width * 0.15);
         }
+
+        public void GetDataSourceVertical(SqlConnection conn)
+        {
+            string query = "SELECT Id, Vertical FROM TR_VERTICAL ORDER BY Id ASC;";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            using (var reader = cmd.ExecuteReader())
+            {
+                List<IdValue> ItemsVertical = new List<IdValue>();
+                while (reader.Read())
+                {
+                    IdValue item = new IdValue();
+                    if(ItemsVertical.Count == 0)
+                    {
+                        item.Id = System.Convert.ToInt32(0);
+                        item.Value = "Total".ToString();
+                        ItemsVertical.Add(item);
+                        item = new IdValue();
+                    }
+                    item.Id = System.Convert.ToInt32(reader["Id"]);
+                    item.Value = reader["Vertical"].ToString();
+                    ItemsVertical.Add(item);
+                }
+                reader.Close();
+                cmbVertical.DataSource = ItemsVertical;
+                cmbVertical.DisplayMember = "Value";
+                cmbVertical.ValueMember = "Id";
+
+            };
+        }
+
         public void ChargeData()
         {
             PrepareDataGridView();
@@ -70,7 +101,7 @@ namespace AutoRepsol
             }
             else
             {
-                var vertical = cmbVertical.SelectedItem;
+                var vertical = cmbVertical.Text;
                 query = String.Format("SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA, OTS.TIPO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT WHERE TV.Vertical LIKE '{0}'", vertical);
             }
 
@@ -139,6 +170,7 @@ namespace AutoRepsol
 
         private void GetItemData(object sender, DataGridViewCellEventArgs e)
         {
+            
             int idRowSelected = e.RowIndex;
             try
             {
@@ -146,6 +178,7 @@ namespace AutoRepsol
                 var editForm = new Edit(System.Convert.ToInt32(IdRegistro), userDB, conn);
                 editForm.FormClosed += new FormClosedEventHandler(RefreshData);
                 editForm.Show();
+                this.Dispose();
             }
             catch (Exception ex)
             {
@@ -157,6 +190,7 @@ namespace AutoRepsol
         {
             var createForm = new Create(userDB, conn);
             createForm.Show();
+            this.Dispose();
         }
 
         private void enableDisableDelete(object sender, DataGridViewRowStateChangedEventArgs e)
