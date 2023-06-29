@@ -74,7 +74,6 @@ namespace AutoRepsol
                 dbTipo.DataSource = ItemsTypes;
                 dbTipo.DisplayMember = "Value";
                 dbTipo.ValueMember = "Id";
-
             };
         }
 

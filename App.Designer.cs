@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            cmbVertical = new ComboBox();
             btnDelete = new Button();
             btnCreate = new Button();
             panel2 = new Panel();
@@ -48,6 +49,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(cmbVertical);
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(btnCreate);
             panel1.Dock = DockStyle.Top;
@@ -56,6 +58,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1284, 60);
             panel1.TabIndex = 0;
+            // 
+            // cmbVertical
+            // 
+            cmbVertical.FormattingEnabled = true;
+            cmbVertical.Items.AddRange(new object[] { "Todos", "BO - Backoffice", "FO - Frontoffice", "FA - Facturación", "PM - Pricing", "LO - Logística" });
+            cmbVertical.Location = new Point(267, 11);
+            cmbVertical.Name = "cmbVertical";
+            cmbVertical.Size = new Size(182, 33);
+            cmbVertical.TabIndex = 2;
+            cmbVertical.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // btnDelete
             // 
@@ -217,5 +229,6 @@
         private Button btnDelete;
         private Label lblCatalog;
         private Label label3;
+        private ComboBox cmbVertical;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using AutoRepsol.Models;
+using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
@@ -59,11 +60,20 @@ namespace AutoRepsol
             dbData.Columns[3].Width = (int)(dbData.Width * 0.1);
             dbData.Columns[4].Width = (int)(dbData.Width * 0.15);
         }
-
         public void ChargeData()
         {
             PrepareDataGridView();
-            var query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA, OTS.TIPO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
+            var query = "";
+            if (cmbVertical.SelectedIndex == 0 || cmbVertical.SelectedIndex == -1)
+            {
+                query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA, OTS.TIPO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
+            }
+            else
+            {
+                var vertical = cmbVertical.SelectedItem;
+                query = String.Format("SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA, OTS.TIPO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT WHERE TV.Vertical LIKE '{0}'", vertical);
+            }
+
             SqlCommand command = new SqlCommand(query, conn);
             var data = command.ExecuteReader();
             while (data.Read())
@@ -208,6 +218,11 @@ namespace AutoRepsol
             catch (Exception ex)
             { MessageBox.Show("Consulta no válida"); }
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData(sender, e);
         }
     }
 }

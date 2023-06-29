@@ -73,7 +73,6 @@
             // dbVertical
             // 
             dbVertical.FormattingEnabled = true;
-            dbVertical.Items.AddRange(new object[] { "BO - Backoffice", "FO - Frontoffice", "FA - Facturación", "PM - Pricing", "LO - Logística" });
             dbVertical.Location = new Point(34, 194);
             dbVertical.Margin = new Padding(4);
             dbVertical.Name = "dbVertical";
