@@ -76,7 +76,7 @@ namespace AutoRepsol
                     if(ItemsVertical.Count == 0)
                     {
                         item.Id = System.Convert.ToInt32(0);
-                        item.Value = "Total".ToString();
+                        item.Value = "Todos".ToString();
                         ItemsVertical.Add(item);
                         item = new IdValue();
                     }
@@ -96,7 +96,7 @@ namespace AutoRepsol
         {
             PrepareDataGridView();
             var query = "";
-            if (cmbVertical.SelectedIndex == 0 || cmbVertical.SelectedIndex == -1)
+            if (cmbVertical.SelectedIndex == 0)
             {
                 query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA, OTS.TIPO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
             }

@@ -95,7 +95,9 @@ namespace AutoRepsol
 
         private void closeEditForm(object sender, EventArgs e)
         {
-            this.Dispose();
+            var app = new App(userDB, conn);
+            app.Show();
+            this.Dispose(true);
         }
         public bool ValidateForm()
         {

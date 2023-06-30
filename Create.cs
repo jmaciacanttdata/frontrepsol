@@ -33,8 +33,9 @@ namespace AutoRepsol
 
         private void closeCreateForm(object sender, EventArgs e)
         {
-            this.Hide();
-
+            var app = new App(userDB, conn);
+            app.Show();
+            this.Dispose(true);
         }
 
         public void GetDataSourceVertical(SqlConnection conn)
