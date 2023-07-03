@@ -29,6 +29,7 @@ namespace AutoRepsol
             iprogress.Maximum = maximumProgress;
             GetDBData();
             InstallDBComponents();
+
         }
 
         public async Task GetDBData() {
