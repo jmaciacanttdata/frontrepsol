@@ -1,11 +1,7 @@
 {
-  "dbServer": "ALC-D718SV3\\SQLEXPRESS",
+  "dbServer": "ALC-GKQT9C3\\SQLEXPRESS",
   "dbDataBase": "TRITON",
   "dbConnection": "Data Source={0};Initial Catalog={1};User ID={2};Password={3}",
-  "dbEmergencia": {
-    "dbServer": "ALC-D718SV3\\SQLEXPRESS",
-    "dbUser": "",
-    "dbPassword ": "",
-    "dbName": "TRITON"
-  }
+  "dbEmergenciasUser": "userTriton",
+  "dbEmergenciasPassword": "uTritonPa$$"
 }

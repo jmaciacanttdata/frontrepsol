@@ -29,10 +29,13 @@ namespace AutoRepsol
             iprogress.Maximum = maximumProgress;
             GetDBData();
             InstallDBComponents();
+            Login uLogin = new Login();
+            uLogin.Show();
 
         }
 
-        public async Task GetDBData() {
+        public async Task GetDBData()
+        {
             try
             {
                 string fileQuerys = @"./Installer/db_install.txt";
@@ -47,6 +50,7 @@ namespace AutoRepsol
                 }
                 progressCompleted = 100 - Querys.Count;
                 iprogress.Value = progressCompleted;
+                this.Hide();
             }
             catch (Exception ex)
             {
@@ -63,7 +67,8 @@ namespace AutoRepsol
             connetionString = String.Format(_configuration.GetSection("dbConnection").Value, dbServer, dbDataBase, dbEmergenciasUser, dbEmergenciasPassword);
             cnn = new SqlConnection(connetionString);
 
-            try { 
+            try
+            {
                 cnn.Open();
                 int totalPendiente = maximumProgress - progressCompleted;
                 int avancePorQuery = Querys.Count / totalPendiente;
@@ -77,7 +82,7 @@ namespace AutoRepsol
                 }
                 cnn.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Se han producido errores al intentar conectar a la base de datos.\r\n\r\n" + ex.Message);
             }
