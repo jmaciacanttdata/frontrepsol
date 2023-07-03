@@ -1039,19 +1039,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cbledaal\\.nuget\\packages\\": {}
+    "C:\\Users\\jmaciaca\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\AutoRepsol.csproj",
+      "projectUniqueName": "C:\\Users\\jmaciaca\\Desktop\\Proyectos\\Repsol\\Tritón\\App\\frontrepsol\\AutoRepsol.csproj",
       "projectName": "AutoRepsol",
-      "projectPath": "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\AutoRepsol.csproj",
-      "packagesPath": "C:\\Users\\cbledaal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\obj\\",
+      "projectPath": "C:\\Users\\jmaciaca\\Desktop\\Proyectos\\Repsol\\Tritón\\App\\frontrepsol\\AutoRepsol.csproj",
+      "packagesPath": "C:\\Users\\jmaciaca\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jmaciaca\\Desktop\\Proyectos\\Repsol\\Tritón\\App\\frontrepsol\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\cbledaal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jmaciaca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1059,6 +1066,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1113,7 +1121,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
