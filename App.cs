@@ -110,7 +110,10 @@ namespace AutoRepsol
             var data = command.ExecuteReader();
             while (data.Read())
             {
-                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), data.GetBoolean(3), data.GetString(4));
+                string validate = "No";
+                if (data.GetBoolean(3))
+                    validate = "Si";
+                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), validate, data.GetString(4));
             }
             iniciate = true;
             data.Close();
@@ -217,7 +220,10 @@ namespace AutoRepsol
         {
             try
             {
-                bool active = (bool)dbData.SelectedCells[3].Value;
+                bool active = false;
+                if (dbData.SelectedCells[3].Value == "Si")
+                    active = true;
+
                 if (!active)
                 {
                     var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar la consulta seleccionada?", "Borrado de Consultas", MessageBoxButtons.YesNo);

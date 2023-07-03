@@ -87,7 +87,12 @@ namespace AutoRepsol
                 dbDetalle.Text = reader["NOMBRE_PROCEDIMIENTO"].ToString();
                 dbVertical.SelectedIndex = dbVertical.FindStringExact(reader["Vertical"].ToString());
                 dbTipo.SelectedIndex = dbTipo.FindStringExact(reader["TIPO"].ToString());
-                dbRegulariza.Text = reader["REGULARIZA"].ToString();
+
+                if (reader["REGULARIZA"].ToString() == "True")
+                    dbRegulariza.Text = "Si";
+                else
+                    dbRegulariza.Text = "No";
+
                 dbQuery.Text = reader["CONSULTA_SEL"].ToString();
             }
             reader.Close();
