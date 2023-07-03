@@ -17,6 +17,7 @@ namespace AutoRepsol
         {
             InitializeComponent();
             InstallDBComponents();
+
         }
 
         public void InstallDBComponents()
