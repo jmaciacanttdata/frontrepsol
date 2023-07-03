@@ -87,7 +87,12 @@ namespace AutoRepsol
                 dbDetalle.Text = reader["NOMBRE_PROCEDIMIENTO"].ToString();
                 dbVertical.SelectedIndex = dbVertical.FindStringExact(reader["Vertical"].ToString());
                 dbTipo.SelectedIndex = dbTipo.FindStringExact(reader["TIPO"].ToString());
-                dbRegulariza.Text = reader["REGULARIZA"].ToString();
+
+                if (reader["REGULARIZA"].ToString() == "True")
+                    dbRegulariza.Text = "Si";
+                else
+                    dbRegulariza.Text = "No";
+
                 dbQuery.Text = reader["CONSULTA_SEL"].ToString();
             }
             reader.Close();
@@ -103,6 +108,12 @@ namespace AutoRepsol
         {
             bool isCompleted = true;
             if (String.IsNullOrEmpty(dbDetalle.Text))
+                isCompleted = false;
+            else if (dbVertical.SelectedItem == null)
+                isCompleted = false;
+            else if (dbRegulariza.SelectedItem == null)
+                isCompleted = false;
+            else if (dbTipo.SelectedItem == null)
                 isCompleted = false;
             else if (String.IsNullOrEmpty(dbQuery.Text))
                 isCompleted = false;
