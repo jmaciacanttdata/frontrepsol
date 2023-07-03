@@ -38,6 +38,7 @@ namespace AutoRepsol
 
         private void LoginDB(object sender, EventArgs e)
         {
+
             dbConnectionResult.Visible = false;
             string dbUserName = dbUser.Text;
             string dbUserPass = dbPassword.Text;

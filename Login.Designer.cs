@@ -36,11 +36,13 @@
             btnLogin = new Button();
             lblClose = new Label();
             dbConnectionResult = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dbUser
             // 
-            dbUser.Location = new Point(42, 168);
+            dbUser.Location = new Point(42, 235);
             dbUser.Margin = new Padding(2);
             dbUser.Name = "dbUser";
             dbUser.Size = new Size(316, 31);
@@ -48,7 +50,7 @@
             // 
             // dbPassword
             // 
-            dbPassword.Location = new Point(42, 258);
+            dbPassword.Location = new Point(42, 298);
             dbPassword.Margin = new Padding(2);
             dbPassword.Name = "dbPassword";
             dbPassword.PasswordChar = '*';
@@ -58,8 +60,8 @@
             // lblUser
             // 
             lblUser.AutoSize = true;
-            lblUser.ForeColor = Color.White;
-            lblUser.Location = new Point(42, 140);
+            lblUser.ForeColor = Color.MidnightBlue;
+            lblUser.Location = new Point(42, 207);
             lblUser.Margin = new Padding(2, 0, 2, 0);
             lblUser.Name = "lblUser";
             lblUser.Size = new Size(72, 25);
@@ -69,8 +71,8 @@
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.ForeColor = Color.White;
-            lblPassword.Location = new Point(42, 229);
+            lblPassword.ForeColor = Color.MidnightBlue;
+            lblPassword.Location = new Point(42, 269);
             lblPassword.Margin = new Padding(2, 0, 2, 0);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(101, 25);
@@ -81,7 +83,7 @@
             // 
             btnLogin.BackColor = SystemColors.InactiveCaption;
             btnLogin.FlatStyle = FlatStyle.System;
-            btnLogin.Location = new Point(132, 350);
+            btnLogin.Location = new Point(132, 375);
             btnLogin.Margin = new Padding(2);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(130, 48);
@@ -117,13 +119,23 @@
             dbConnectionResult.TextAlign = ContentAlignment.MiddleCenter;
             dbConnectionResult.Visible = false;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(42, 63);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(316, 116);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(398, 494);
+            Controls.Add(pictureBox1);
             Controls.Add(dbConnectionResult);
             Controls.Add(lblClose);
             Controls.Add(btnLogin);
@@ -136,6 +148,7 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -149,5 +162,6 @@
         private Button btnLogin;
         private Label lblClose;
         private Label dbConnectionResult;
+        private PictureBox pictureBox1;
     }
 }

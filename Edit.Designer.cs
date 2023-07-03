@@ -173,7 +173,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(1266, 780);
             Controls.Add(label5);
             Controls.Add(dbTipo);

@@ -30,6 +30,7 @@ namespace AutoRepsol
         public App(string dbUser, SqlConnection _conn)
         {
             InitializeComponent();
+            dbData.ReadOnly = true;
             _configuration = new ConfigurationBuilder().AddJsonFile("sysconfig.json", optional: false, reloadOnChange: true).Build();
             lblUserName.Text = dbUser;
             userDB = dbUser;
@@ -73,7 +74,7 @@ namespace AutoRepsol
                 while (reader.Read())
                 {
                     IdValue item = new IdValue();
-                    if(ItemsVertical.Count == 0)
+                    if (ItemsVertical.Count == 0)
                     {
                         item.Id = System.Convert.ToInt32(0);
                         item.Value = "Todos".ToString();
@@ -175,7 +176,7 @@ namespace AutoRepsol
 
         private void GetItemData(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             int idRowSelected = e.RowIndex;
             try
             {
@@ -219,13 +220,7 @@ namespace AutoRepsol
         private void deleteCase(object sender, EventArgs e)
         {
             try
-            {
-                bool active = false;
-                if (dbData.SelectedCells[3].Value == "Si")
-                    active = true;
-
-                if (!active)
-                {
+            {   
                     var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar la consulta seleccionada?", "Borrado de Consultas", MessageBoxButtons.YesNo);
                     if (confirmDelete == DialogResult.Yes)
                     {
@@ -251,11 +246,6 @@ namespace AutoRepsol
                             MessageBox.Show(ex.Message);
                         }
                     }
-                    else
-                        this.Dispose();
-                }
-                else
-                    MessageBox.Show("La consulta no se puede eliminar ya que está en estado activo");
             }
             catch (Exception ex)
             { MessageBox.Show("Consulta no válida"); }

@@ -15,6 +15,7 @@ namespace AutoRepsol
 {
     public partial class Installer : Form
     {
+        bool processCompleted = false;
         string connetionString;
         List<string> Querys = new List<string>();
         int progressCompleted = 0;
@@ -29,9 +30,6 @@ namespace AutoRepsol
             iprogress.Maximum = maximumProgress;
             GetDBData();
             InstallDBComponents();
-            Login uLogin = new Login();
-            uLogin.Show();
-
         }
 
         public async Task GetDBData()
@@ -50,7 +48,6 @@ namespace AutoRepsol
                 }
                 progressCompleted = 100 - Querys.Count;
                 iprogress.Value = progressCompleted;
-                this.Hide();
             }
             catch (Exception ex)
             {
@@ -81,10 +78,22 @@ namespace AutoRepsol
                     iprogress.Value = progressCompleted;
                 }
                 cnn.Close();
+                processCompleted = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Se han producido errores al intentar conectar a la base de datos.\r\n\r\n" + ex.Message);
+            }
+        }
+
+        private void ValidateProces(object sender, EventArgs e)
+        {
+            if (processCompleted)
+            {
+                Thread.Sleep(2000);
+                Login uLogin = new Login();
+                uLogin.Show();
+                this.Hide();
             }
         }
     }

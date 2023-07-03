@@ -76,6 +76,7 @@
             Name = "Installer";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Installer";
+            Shown += ValidateProces;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

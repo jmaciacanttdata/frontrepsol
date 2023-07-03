@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             panel1 = new Panel();
             cmbVertical = new ComboBox();
             btnDelete = new Button();
@@ -41,14 +42,17 @@
             label2 = new Label();
             lblUserName = new Label();
             label1 = new Label();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dbData).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(cmbVertical);
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(btnCreate);
@@ -104,6 +108,10 @@
             // 
             // dbData
             // 
+            dbData.AllowUserToAddRows = false;
+            dbData.AllowUserToDeleteRows = false;
+            dbData.AllowUserToResizeColumns = false;
+            dbData.AllowUserToResizeRows = false;
             dbData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dbData.Dock = DockStyle.Fill;
             dbData.Location = new Point(0, 0);
@@ -112,6 +120,8 @@
             dbData.ReadOnly = true;
             dbData.RowHeadersWidth = 62;
             dbData.RowTemplate.Height = 33;
+            dbData.ShowCellToolTips = false;
+            dbData.ShowEditingIcon = false;
             dbData.Size = new Size(1284, 641);
             dbData.TabIndex = 3;
             dbData.CellDoubleClick += GetItemData;
@@ -192,6 +202,17 @@
             label1.TabIndex = 0;
             label1.Text = "User:";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Right;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(1148, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(136, 60);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
             // App
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -212,6 +233,7 @@
             ((System.ComponentModel.ISupportInitialize)dbData).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -230,5 +252,6 @@
         private Label lblCatalog;
         private Label label3;
         private ComboBox cmbVertical;
+        private PictureBox pictureBox1;
     }
 }
