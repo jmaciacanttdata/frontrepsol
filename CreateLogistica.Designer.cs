@@ -38,7 +38,7 @@
             dbURL = new TextBox();
             label4 = new Label();
             dbQuery = new RichTextBox();
-            richTextBox1 = new RichTextBox();
+            dbEstructure = new RichTextBox();
             label6 = new Label();
             btnCancel = new Button();
             btnSave = new Button();
@@ -65,7 +65,7 @@
             // dbVertical
             // 
             dbVertical.FormattingEnabled = true;
-            dbVertical.Location = new Point(1087, 87);
+            dbVertical.Location = new Point(824, 89);
             dbVertical.Margin = new Padding(4);
             dbVertical.Name = "dbVertical";
             dbVertical.Size = new Size(482, 33);
@@ -74,7 +74,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(1087, 53);
+            label2.Location = new Point(824, 55);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(68, 25);
@@ -102,7 +102,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(1087, 147);
+            label5.Location = new Point(824, 149);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(43, 25);
@@ -111,7 +111,7 @@
             // 
             // dbURL
             // 
-            dbURL.Location = new Point(1087, 183);
+            dbURL.Location = new Point(824, 185);
             dbURL.Margin = new Padding(4);
             dbURL.Name = "dbURL";
             dbURL.Size = new Size(482, 31);
@@ -133,19 +133,19 @@
             dbQuery.Location = new Point(13, 267);
             dbQuery.Margin = new Padding(4);
             dbQuery.Name = "dbQuery";
-            dbQuery.Size = new Size(1556, 368);
+            dbQuery.Size = new Size(1293, 368);
             dbQuery.TabIndex = 12;
             dbQuery.Text = "";
             // 
-            // richTextBox1
+            // dbEstructure
             // 
-            richTextBox1.BorderStyle = BorderStyle.None;
-            richTextBox1.Location = new Point(13, 697);
-            richTextBox1.Margin = new Padding(4);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(1556, 365);
-            richTextBox1.TabIndex = 18;
-            richTextBox1.Text = "";
+            dbEstructure.BorderStyle = BorderStyle.None;
+            dbEstructure.Location = new Point(13, 697);
+            dbEstructure.Margin = new Padding(4);
+            dbEstructure.Name = "dbEstructure";
+            dbEstructure.Size = new Size(1293, 508);
+            dbEstructure.TabIndex = 18;
+            dbEstructure.Text = "";
             // 
             // label6
             // 
@@ -181,10 +181,10 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1673, 1180);
+            ClientSize = new Size(1338, 1050);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
-            Controls.Add(richTextBox1);
+            Controls.Add(dbEstructure);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(dbURL);
@@ -214,7 +214,7 @@
         private TextBox dbURL;
         private Label label4;
         private RichTextBox dbQuery;
-        private RichTextBox richTextBox1;
+        private RichTextBox dbEstructure;
         private Label label6;
         private Button btnCancel;
         private Button btnSave;
