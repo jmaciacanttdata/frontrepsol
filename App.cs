@@ -54,15 +54,11 @@ namespace AutoRepsol
             dbData.Columns.Add("Id", "Id");
             dbData.Columns.Add("Vertical", "Vertical");
             dbData.Columns.Add("Detalle", "Detalle");
-            dbData.Columns.Add("Regulariza", "Regulariza");
-            dbData.Columns.Add("Tipo Script", "Tipo Script");
 
             dbData.Columns[0].Width = (int)(dbData.Width * 0.1);
-            dbData.Columns[1].Width = (int)(dbData.Width * 0.2);
-            dbData.Columns[2].Width = (int)(dbData.Width * 0.45);
+            dbData.Columns[1].Width = (int)(dbData.Width * 0.25);
+            dbData.Columns[2].Width = (int)(dbData.Width * 0.65);
             dbData.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dbData.Columns[3].Width = (int)(dbData.Width * 0.1);
-            dbData.Columns[4].Width = (int)(dbData.Width * 0.15);
         }
 
         public void GetDataSourceVertical(SqlConnection conn)
@@ -98,24 +94,34 @@ namespace AutoRepsol
         {
             PrepareDataGridView();
             var query = "";
+            var querylog = "";
             if (cmbVertical.SelectedIndex == 0)
             {
-                query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA, OTS.TIPO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
+                query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
+                querylog = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO";
+            }
+            else if (cmbVertical.SelectedIndex == 5)
+            {
+                query = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO";
             }
             else
             {
                 var vertical = cmbVertical.Text;
-                query = String.Format("SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA, OTS.TIPO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT WHERE TV.Vertical LIKE '{0}'", vertical);
+                query = String.Format("SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT WHERE TV.Vertical LIKE '{0}'", vertical);
             }
 
             SqlCommand command = new SqlCommand(query, conn);
             var data = command.ExecuteReader();
             while (data.Read())
             {
-                string validate = "No";
-                if (data.GetBoolean(3))
-                    validate = "Si";
-                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), validate, data.GetString(4));
+                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2));
+            }
+
+            command = new SqlCommand(querylog, conn);
+            data = command.ExecuteReader();
+            while(data.Read())
+            {
+                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2));
             }
             iniciate = true;
             data.Close();
@@ -182,10 +188,32 @@ namespace AutoRepsol
             try
             {
                 string IdRegistro = dbData.Rows[idRowSelected].Cells[0].Value.ToString();
-                var editForm = new Edit(System.Convert.ToInt32(IdRegistro), userDB, conn);
-                editForm.FormClosed += new FormClosedEventHandler(RefreshData);
-                editForm.Show();
-                this.Dispose();
+                string Detalle = dbData.Rows[idRowSelected].Cells[1].Value.ToString();
+                var query = String.Format("SELECT ID FROM LOGISTICA_SCRIPTS WHERE NOMBRE_PROCEDIMIENTO LIKE {0}", Detalle);
+                SqlCommand cmd = new SqlCommand(query, conn);
+                try
+                {
+                    if (cmd.ExecuteNonQuery() != null)
+                    {
+                        var editLogis = new EditLogistica(System.Convert.ToInt32(IdRegistro), userDB, conn);
+                        editLogis.FormClosed += new FormClosedEventHandler(RefreshData);
+                        editLogis.Show();
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        var editForm = new Edit(System.Convert.ToInt32(IdRegistro), userDB, conn);
+                        editForm.FormClosed += new FormClosedEventHandler(RefreshData);
+                        editForm.Show();
+                        this.Dispose();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
             catch (Exception ex)
             {
@@ -260,11 +288,6 @@ namespace AutoRepsol
             {
                 RefreshData(sender, e);
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

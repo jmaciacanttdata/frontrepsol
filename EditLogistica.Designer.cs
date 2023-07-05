@@ -32,9 +32,7 @@
             dbTablaTemporal = new TextBox();
             label1 = new Label();
             dbDetalle = new TextBox();
-            comboBox1 = new ComboBox();
-            label2 = new Label();
-            textBox1 = new TextBox();
+            dbURL = new TextBox();
             label4 = new Label();
             dbQuery = new RichTextBox();
             label5 = new Label();
@@ -80,37 +78,18 @@
             dbDetalle.Size = new Size(651, 31);
             dbDetalle.TabIndex = 15;
             // 
-            // comboBox1
+            // dbURL
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(805, 98);
-            comboBox1.Margin = new Padding(4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(482, 33);
-            comboBox1.TabIndex = 5;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(805, 64);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(68, 25);
-            label2.TabIndex = 4;
-            label2.Text = "Vertical";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(805, 194);
-            textBox1.Margin = new Padding(4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(482, 31);
-            textBox1.TabIndex = 15;
+            dbURL.Location = new Point(805, 100);
+            dbURL.Margin = new Padding(4);
+            dbURL.Name = "dbURL";
+            dbURL.Size = new Size(482, 31);
+            dbURL.TabIndex = 15;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(805, 158);
+            label4.Location = new Point(805, 64);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(43, 25);
@@ -183,7 +162,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1309, 1144);
+            ClientSize = new Size(1309, 1050);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(dbXML);
@@ -195,9 +174,7 @@
             Controls.Add(label1);
             Controls.Add(dbDetalle);
             Controls.Add(label4);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox1);
-            Controls.Add(label2);
+            Controls.Add(dbURL);
             Name = "EditLogistica";
             Text = "EditLogistica";
             ResumeLayout(false);
@@ -210,9 +187,7 @@
         private TextBox dbTablaTemporal;
         private Label label1;
         private TextBox dbDetalle;
-        private ComboBox comboBox1;
-        private Label label2;
-        private TextBox textBox1;
+        private TextBox dbURL;
         private Label label4;
         private RichTextBox dbQuery;
         private Label label5;
