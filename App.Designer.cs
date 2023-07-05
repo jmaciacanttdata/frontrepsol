@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             cmbVertical = new ComboBox();
             btnDelete = new Button();
             btnCreate = new Button();
@@ -42,12 +43,11 @@
             label2 = new Label();
             lblUserName = new Label();
             label1 = new Label();
-            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dbData).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -62,6 +62,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1284, 60);
             panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Right;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(1148, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(136, 60);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
             // 
             // cmbVertical
             // 
@@ -145,7 +156,7 @@
             // lblCatalog
             // 
             lblCatalog.AutoSize = true;
-            lblCatalog.Location = new Point(411, 8);
+            lblCatalog.Location = new Point(411, 6);
             lblCatalog.Margin = new Padding(4, 0, 4, 0);
             lblCatalog.Name = "lblCatalog";
             lblCatalog.Size = new Size(59, 25);
@@ -165,7 +176,7 @@
             // lblServer
             // 
             lblServer.AutoSize = true;
-            lblServer.Location = new Point(84, 9);
+            lblServer.Location = new Point(84, 8);
             lblServer.Margin = new Padding(4, 0, 4, 0);
             lblServer.Name = "lblServer";
             lblServer.Size = new Size(59, 25);
@@ -185,7 +196,7 @@
             // lblUserName
             // 
             lblUserName.AutoSize = true;
-            lblUserName.Location = new Point(711, 8);
+            lblUserName.Location = new Point(711, 6);
             lblUserName.Margin = new Padding(2, 0, 2, 0);
             lblUserName.Name = "lblUserName";
             lblUserName.Size = new Size(59, 25);
@@ -201,17 +212,6 @@
             label1.Size = new Size(51, 25);
             label1.TabIndex = 0;
             label1.Text = "User:";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Dock = DockStyle.Right;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(1148, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(136, 60);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
             // 
             // App
             // 
@@ -229,11 +229,11 @@
             WindowState = FormWindowState.Maximized;
             FormClosing += CLoseApp;
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dbData).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 

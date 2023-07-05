@@ -50,6 +50,7 @@ namespace AutoRepsol
 
         private void PrepareDataGridView()
         {
+
             dbData.Columns.Add("Id", "Id");
             dbData.Columns.Add("Vertical", "Vertical");
             dbData.Columns.Add("Detalle", "Detalle");
@@ -220,32 +221,32 @@ namespace AutoRepsol
         private void deleteCase(object sender, EventArgs e)
         {
             try
-            {   
-                    var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar la consulta seleccionada?", "Borrado de Consultas", MessageBoxButtons.YesNo);
-                    if (confirmDelete == DialogResult.Yes)
+            {
+                var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar la consulta seleccionada?", "Borrado de Consultas", MessageBoxButtons.YesNo);
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    //TODO: Lanzar la query para eliminar el registro con id=caseId
+                    int selectedId = (int)dbData.SelectedCells[0].Value;
+                    var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
+                    var queryVertical = "DELETE FROM TR_QUERY_VERTICAL WHERE IdQuery = @Id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlCommand cmdVertical = new SqlCommand(queryVertical, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", selectedId);
+                    cmdVertical.Parameters.AddWithValue("Id", selectedId);
+                    try
                     {
-                        //TODO: Lanzar la query para eliminar el registro con id=caseId
-                        int selectedId = (int)dbData.SelectedCells[0].Value;
-                        var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
-                        var queryVertical = "DELETE FROM TR_QUERY_VERTICAL WHERE IdQuery = @Id";
-
-                        SqlCommand cmd = new SqlCommand(query, conn);
-                        SqlCommand cmdVertical = new SqlCommand(queryVertical, conn);
-
-                        cmd.Parameters.AddWithValue("@Id", selectedId);
-                        cmdVertical.Parameters.AddWithValue("Id", selectedId);
-                        try
-                        {
-                            cmd.ExecuteNonQuery();
-                            cmdVertical.ExecuteNonQuery();
-                            MessageBox.Show("La consulta ha sido eliminada correctamente.", "Borrado de Consultas");
-                            RefreshData(sender, e);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
+                        cmd.ExecuteNonQuery();
+                        cmdVertical.ExecuteNonQuery();
+                        MessageBox.Show("La consulta ha sido eliminada correctamente.", "Borrado de Consultas");
+                        RefreshData(sender, e);
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             }
             catch (Exception ex)
             { MessageBox.Show("Consulta no válida"); }
