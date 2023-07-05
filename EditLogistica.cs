@@ -41,7 +41,7 @@ namespace AutoRepsol
             if (reader.Read())
             {
                 dbDetalle.Text = reader["NOMBRE_PROCEDIMIENTO"].ToString();
-                dbTablaTemporal.Text = reader["TEMP_TABLE"].ToString(); 
+                dbTablaTemporal.Text = reader["TEMP_TABLE"].ToString();
                 dbURL.Text = reader["XML_ORIGIN"].ToString();
                 dbXML.Text = reader["TEMP_TABLE_STRUC"].ToString();
                 dbQuery.Text = reader["CONSULTA_SEL"].ToString();
@@ -61,7 +61,7 @@ namespace AutoRepsol
             else if (String.IsNullOrEmpty(dbURL.Text))
                 isCompleted = false;
             else if (String.IsNullOrEmpty(dbQuery.Text))
-                        isCompleted = false;
+                isCompleted = false;
 
             //TODO: Comprobar que todos los campos están rellenos y encaso de no estar almenos 1, poner el flag a FALSE
 

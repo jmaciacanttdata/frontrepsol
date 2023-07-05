@@ -55,7 +55,7 @@ namespace AutoRepsol
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Se ha guardado la consulta correctamente");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
