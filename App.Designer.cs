@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             panel1 = new Panel();
+            button2 = new Button();
             pictureBox1 = new PictureBox();
             cmbVertical = new ComboBox();
             btnDelete = new Button();
@@ -43,7 +44,6 @@
             label2 = new Label();
             lblUserName = new Label();
             label1 = new Label();
-            button2 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -64,6 +64,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1284, 60);
             panel1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(200, 11);
+            button2.Name = "button2";
+            button2.Size = new Size(112, 34);
+            button2.TabIndex = 5;
+            button2.Text = "Create LO";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // pictureBox1
             // 
@@ -214,15 +224,6 @@
             label1.Size = new Size(51, 25);
             label1.TabIndex = 0;
             label1.Text = "User:";
-            // 
-            // button2
-            // 
-            button2.Location = new Point(200, 11);
-            button2.Name = "button2";
-            button2.Size = new Size(112, 34);
-            button2.TabIndex = 5;
-            button2.Text = "Create LO";
-            button2.UseVisualStyleBackColor = true;
             // 
             // App
             // 

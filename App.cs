@@ -116,15 +116,17 @@ namespace AutoRepsol
             {
                 dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2));
             }
+            data.Close();
 
             command = new SqlCommand(querylog, conn);
             data = command.ExecuteReader();
-            while(data.Read())
+            while (data.Read())
             {
                 dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2));
             }
-            iniciate = true;
             data.Close();
+
+            iniciate = true;
         }
 
         private void CLoseApp(object sender, FormClosingEventArgs e)
@@ -288,6 +290,13 @@ namespace AutoRepsol
             {
                 RefreshData(sender, e);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var createForm = new CreateLogistica(userDB, conn);
+            createForm.Show();
+            this.Dispose();
         }
     }
 }

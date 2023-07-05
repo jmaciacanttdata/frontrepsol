@@ -30,8 +30,6 @@
         {
             label1 = new Label();
             dbDetalle = new TextBox();
-            dbVertical = new ComboBox();
-            label2 = new Label();
             label3 = new Label();
             dbTablaTemporal = new TextBox();
             label5 = new Label();
@@ -62,25 +60,6 @@
             dbDetalle.Size = new Size(651, 31);
             dbDetalle.TabIndex = 2;
             // 
-            // dbVertical
-            // 
-            dbVertical.FormattingEnabled = true;
-            dbVertical.Location = new Point(824, 89);
-            dbVertical.Margin = new Padding(4);
-            dbVertical.Name = "dbVertical";
-            dbVertical.Size = new Size(482, 33);
-            dbVertical.TabIndex = 5;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(824, 55);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(68, 25);
-            label2.TabIndex = 4;
-            label2.Text = "Vertical";
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -102,7 +81,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(824, 149);
+            label5.Location = new Point(805, 53);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(43, 25);
@@ -111,7 +90,7 @@
             // 
             // dbURL
             // 
-            dbURL.Location = new Point(824, 185);
+            dbURL.Location = new Point(805, 89);
             dbURL.Margin = new Padding(4);
             dbURL.Name = "dbURL";
             dbURL.Size = new Size(482, 31);
@@ -146,6 +125,7 @@
             btnCancel.TabIndex = 20;
             btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click_1;
             // 
             // btnSave
             // 
@@ -156,6 +136,7 @@
             btnSave.TabIndex = 19;
             btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // dbXML
             // 
@@ -192,8 +173,6 @@
             Controls.Add(dbTablaTemporal);
             Controls.Add(dbQuery);
             Controls.Add(label4);
-            Controls.Add(dbVertical);
-            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dbDetalle);
             Name = "CreateLogistica";
@@ -206,8 +185,6 @@
 
         private Label label1;
         private TextBox dbDetalle;
-        private ComboBox dbVertical;
-        private Label label2;
         private Label label3;
         private TextBox dbTablaTemporal;
         private Label label5;
