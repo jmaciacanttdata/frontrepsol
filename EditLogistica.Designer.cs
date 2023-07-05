@@ -38,8 +38,10 @@
             label4 = new Label();
             dbQuery = new RichTextBox();
             label5 = new Label();
-            richTextBox1 = new RichTextBox();
+            dbXML = new RichTextBox();
             label6 = new Label();
+            btnCancel = new Button();
+            btnSave = new Button();
             SuspendLayout();
             // 
             // label3
@@ -81,7 +83,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(1104, 98);
+            comboBox1.Location = new Point(805, 98);
             comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(482, 33);
@@ -90,7 +92,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(1104, 64);
+            label2.Location = new Point(805, 64);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(68, 25);
@@ -99,7 +101,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(1104, 194);
+            textBox1.Location = new Point(805, 194);
             textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(482, 31);
@@ -108,7 +110,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1104, 158);
+            label4.Location = new Point(805, 158);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(43, 25);
@@ -121,7 +123,7 @@
             dbQuery.Location = new Point(13, 274);
             dbQuery.Margin = new Padding(4);
             dbQuery.Name = "dbQuery";
-            dbQuery.Size = new Size(1556, 368);
+            dbQuery.Size = new Size(1274, 368);
             dbQuery.TabIndex = 20;
             dbQuery.Text = "";
             // 
@@ -135,15 +137,15 @@
             label5.TabIndex = 19;
             label5.Text = "Consulta SQL";
             // 
-            // richTextBox1
+            // dbXML
             // 
-            richTextBox1.BorderStyle = BorderStyle.None;
-            richTextBox1.Location = new Point(13, 694);
-            richTextBox1.Margin = new Padding(4);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(1556, 365);
-            richTextBox1.TabIndex = 22;
-            richTextBox1.Text = "";
+            dbXML.BorderStyle = BorderStyle.None;
+            dbXML.Location = new Point(13, 694);
+            dbXML.Margin = new Padding(4);
+            dbXML.Name = "dbXML";
+            dbXML.Size = new Size(1274, 365);
+            dbXML.TabIndex = 22;
+            dbXML.Text = "";
             // 
             // label6
             // 
@@ -155,12 +157,36 @@
             label6.TabIndex = 21;
             label6.Text = "Estructura XML";
             // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(1017, 1092);
+            btnCancel.Margin = new Padding(4);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(118, 36);
+            btnCancel.TabIndex = 24;
+            btnCancel.Text = "Cancelar";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(1169, 1092);
+            btnSave.Margin = new Padding(4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(118, 36);
+            btnSave.TabIndex = 23;
+            btnSave.Text = "Guardar";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
             // EditLogistica
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1691, 1050);
-            Controls.Add(richTextBox1);
+            ClientSize = new Size(1309, 1144);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(dbXML);
             Controls.Add(label6);
             Controls.Add(dbQuery);
             Controls.Add(label5);
@@ -190,7 +216,9 @@
         private Label label4;
         private RichTextBox dbQuery;
         private Label label5;
-        private RichTextBox richTextBox1;
+        private RichTextBox dbXML;
         private Label label6;
+        private Button btnCancel;
+        private Button btnSave;
     }
 }

@@ -38,10 +38,10 @@
             dbURL = new TextBox();
             label4 = new Label();
             dbQuery = new RichTextBox();
-            dbEstructure = new RichTextBox();
-            label6 = new Label();
             btnCancel = new Button();
             btnSave = new Button();
+            dbXML = new RichTextBox();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -133,33 +133,13 @@
             dbQuery.Location = new Point(13, 267);
             dbQuery.Margin = new Padding(4);
             dbQuery.Name = "dbQuery";
-            dbQuery.Size = new Size(1293, 368);
+            dbQuery.Size = new Size(1274, 366);
             dbQuery.TabIndex = 12;
             dbQuery.Text = "";
             // 
-            // dbEstructure
-            // 
-            dbEstructure.BorderStyle = BorderStyle.None;
-            dbEstructure.Location = new Point(13, 697);
-            dbEstructure.Margin = new Padding(4);
-            dbEstructure.Name = "dbEstructure";
-            dbEstructure.Size = new Size(1293, 508);
-            dbEstructure.TabIndex = 18;
-            dbEstructure.Text = "";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(13, 668);
-            label6.Margin = new Padding(4, 0, 4, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(130, 25);
-            label6.TabIndex = 17;
-            label6.Text = "Estructura XML";
-            // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(1308, 1113);
+            btnCancel.Location = new Point(1017, 1085);
             btnCancel.Margin = new Padding(4);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(118, 36);
@@ -169,7 +149,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(1460, 1113);
+            btnSave.Location = new Point(1169, 1085);
             btnSave.Margin = new Padding(4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(118, 36);
@@ -177,15 +157,35 @@
             btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = true;
             // 
+            // dbXML
+            // 
+            dbXML.BorderStyle = BorderStyle.None;
+            dbXML.Location = new Point(13, 685);
+            dbXML.Margin = new Padding(4);
+            dbXML.Name = "dbXML";
+            dbXML.Size = new Size(1274, 365);
+            dbXML.TabIndex = 24;
+            dbXML.Text = "";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(13, 656);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(130, 25);
+            label6.TabIndex = 23;
+            label6.Text = "Estructura XML";
+            // 
             // CreateLogistica
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1338, 1050);
+            ClientSize = new Size(1310, 1136);
+            Controls.Add(dbXML);
+            Controls.Add(label6);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
-            Controls.Add(dbEstructure);
-            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(dbURL);
             Controls.Add(label3);
@@ -214,9 +214,9 @@
         private TextBox dbURL;
         private Label label4;
         private RichTextBox dbQuery;
-        private RichTextBox dbEstructure;
-        private Label label6;
         private Button btnCancel;
         private Button btnSave;
+        private RichTextBox dbXML;
+        private Label label6;
     }
 }
