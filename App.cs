@@ -52,8 +52,8 @@ namespace AutoRepsol
         {
 
             dbData.Columns.Add("Id", "Id");
-            dbData.Columns.Add("Vertical", "Vertical");
             dbData.Columns.Add("Detalle", "Detalle");
+            dbData.Columns.Add("Consulta", "Consulta");
 
             dbData.Columns[0].Width = (int)(dbData.Width * 0.1);
             dbData.Columns[1].Width = (int)(dbData.Width * 0.25);
@@ -97,7 +97,7 @@ namespace AutoRepsol
             var querylog = "";
             if (cmbVertical.SelectedIndex == 0)
             {
-                query = "SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
+                query = "SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
                 querylog = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO";
             }
             else if (cmbVertical.SelectedIndex == 5)
@@ -107,7 +107,7 @@ namespace AutoRepsol
             else
             {
                 var vertical = cmbVertical.Text;
-                query = String.Format("SELECT OS.ID, TV.Vertical, OS.NOMBRE_PROCEDIMIENTO FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT WHERE TV.Vertical LIKE '{0}'", vertical);
+                query = String.Format("SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT WHERE TV.Vertical LIKE '{0}'", vertical);
             }
 
             SqlCommand command = new SqlCommand(query, conn);
@@ -118,13 +118,17 @@ namespace AutoRepsol
             }
             data.Close();
 
-            command = new SqlCommand(querylog, conn);
-            data = command.ExecuteReader();
-            while (data.Read())
+            if (cmbVertical.SelectedIndex == 0)
             {
-                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2));
+                command = new SqlCommand(querylog, conn);
+                data = command.ExecuteReader();
+                while (data.Read())
+                {
+                    dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2));
+                }
+                data.Close();
             }
-            data.Close();
+
 
             iniciate = true;
         }
