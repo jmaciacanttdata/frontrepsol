@@ -43,6 +43,7 @@
             label2 = new Label();
             lblUserName = new Label();
             label1 = new Label();
+            button2 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(cmbVertical);
             panel1.Controls.Add(btnDelete);
@@ -78,7 +80,7 @@
             // 
             cmbVertical.FormattingEnabled = true;
             cmbVertical.Items.AddRange(new object[] { "Todos", "BO - Backoffice", "FO - Frontoffice", "FA - Facturación", "PM - Pricing", "LO - Logística" });
-            cmbVertical.Location = new Point(267, 11);
+            cmbVertical.Location = new Point(464, 12);
             cmbVertical.Name = "cmbVertical";
             cmbVertical.Size = new Size(182, 33);
             cmbVertical.TabIndex = 2;
@@ -87,7 +89,7 @@
             // btnDelete
             // 
             btnDelete.Enabled = false;
-            btnDelete.Location = new Point(130, 11);
+            btnDelete.Location = new Point(331, 11);
             btnDelete.Margin = new Padding(4, 5, 4, 5);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(108, 34);
@@ -101,9 +103,9 @@
             btnCreate.Location = new Point(11, 11);
             btnCreate.Margin = new Padding(2, 4, 2, 4);
             btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(111, 34);
+            btnCreate.Size = new Size(175, 34);
             btnCreate.TabIndex = 0;
-            btnCreate.Text = "Create";
+            btnCreate.Text = "Create BO/FO/FA";
             btnCreate.UseVisualStyleBackColor = true;
             btnCreate.Click += openCreateForm;
             // 
@@ -213,6 +215,15 @@
             label1.TabIndex = 0;
             label1.Text = "User:";
             // 
+            // button2
+            // 
+            button2.Location = new Point(200, 11);
+            button2.Name = "button2";
+            button2.Size = new Size(112, 34);
+            button2.TabIndex = 5;
+            button2.Text = "Create LO";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // App
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -253,5 +264,6 @@
         private Label label3;
         private ComboBox cmbVertical;
         private PictureBox pictureBox1;
+        private Button button2;
     }
 }

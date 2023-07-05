@@ -40,7 +40,7 @@ namespace AutoRepsol
 
         public void GetDataSourceVertical(SqlConnection conn)
         {
-            string query = "SELECT Id, Vertical FROM TR_VERTICAL ORDER BY Id ASC;";
+            string query = "SELECT Id, Vertical FROM TR_VERTICAL WHERE Id NOT IN(5) ORDER BY Id ASC;";
             SqlCommand cmd = new SqlCommand(query, conn);
             using (var reader = cmd.ExecuteReader())
             {

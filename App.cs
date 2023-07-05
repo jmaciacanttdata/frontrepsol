@@ -261,5 +261,10 @@ namespace AutoRepsol
                 RefreshData(sender, e);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
