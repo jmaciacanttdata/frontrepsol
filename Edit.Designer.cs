@@ -67,7 +67,7 @@
             // 
             // dbQuery
             // 
-            dbQuery.Location = new Point(57, 305);
+            dbQuery.Location = new Point(46, 300);
             dbQuery.Margin = new Padding(4, 3, 4, 3);
             dbQuery.Multiline = true;
             dbQuery.Name = "dbQuery";
@@ -108,10 +108,10 @@
             // 
             dbVertical.FormattingEnabled = true;
             dbVertical.Items.AddRange(new object[] { "BO - Backoffice", "FO - Frontoffice", "FA - Facturación", "PM - Pricing", "LO - Logística" });
-            dbVertical.Location = new Point(51, 188);
+            dbVertical.Location = new Point(46, 188);
             dbVertical.Margin = new Padding(4, 3, 4, 3);
             dbVertical.Name = "dbVertical";
-            dbVertical.Size = new Size(403, 33);
+            dbVertical.Size = new Size(408, 33);
             dbVertical.TabIndex = 13;
             // 
             // label2
@@ -139,7 +139,7 @@
             dbDetalle.Location = new Point(46, 82);
             dbDetalle.Margin = new Padding(4, 3, 4, 3);
             dbDetalle.Name = "dbDetalle";
-            dbDetalle.Size = new Size(1173, 31);
+            dbDetalle.Size = new Size(1161, 31);
             dbDetalle.TabIndex = 10;
             // 
             // dbIdCase
@@ -157,7 +157,7 @@
             dbTipo.FormattingEnabled = true;
             dbTipo.Location = new Point(782, 188);
             dbTipo.Name = "dbTipo";
-            dbTipo.Size = new Size(386, 33);
+            dbTipo.Size = new Size(425, 33);
             dbTipo.TabIndex = 21;
             // 
             // label5

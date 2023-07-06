@@ -31,6 +31,10 @@ namespace AutoRepsol
             GetDataSourceVertical(_conn);
             GetDataSourceType(_conn);
             GetDataCase(IdCase);
+            dbVertical.DropDownStyle = ComboBoxStyle.DropDownList;
+            dbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            dbRegulariza.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
         public void GetDataSourceType(SqlConnection conn)

@@ -39,6 +39,7 @@ namespace AutoRepsol
             conn = _conn;
             GetDataSourceVertical(conn);
             ChargeData();
+            cmbVertical.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public void RefreshData(object sender, EventArgs e)

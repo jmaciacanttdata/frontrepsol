@@ -44,16 +44,16 @@
             // 
             // dbDetalle
             // 
-            dbDetalle.Location = new Point(29, 86);
+            dbDetalle.Location = new Point(0, 94);
             dbDetalle.Margin = new Padding(4);
             dbDetalle.Name = "dbDetalle";
-            dbDetalle.Size = new Size(1173, 31);
+            dbDetalle.Size = new Size(1130, 31);
             dbDetalle.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(29, 50);
+            label1.Location = new Point(0, 65);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(66, 25);

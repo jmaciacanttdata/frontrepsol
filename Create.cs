@@ -29,6 +29,12 @@ namespace AutoRepsol
             GetDataSourceType(_conn);
             dbVertical.SelectedItem = null;
             dbTipo.SelectedItem = null;
+            dbVertical.DropDownStyle = ComboBoxStyle.DropDownList;
+            dbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            dbRegulariza.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+
         }
 
         private void closeCreateForm(object sender, EventArgs e)
