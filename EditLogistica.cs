@@ -73,13 +73,13 @@ namespace AutoRepsol
             if (ValidateForm())
             {
                 //TODO: Aquí va el código para guardar la edición del registro.
-                string query = String.Format("UPDATE LOGISTICA_SCRIPTS SET NOMBRE_PROCEDIMIENTO = @nombre, SET CONSULTA_SEL = @consulta, SET TEMP_TABLE = @tabla, SET TEMP_TABLE_STRUC = @struc, SET XML_ORIGIN = @xml WHERE IdQuery = {0}", Id);
+                string query = String.Format("UPDATE LOGISTICA_SCRIPTS SET NOMBRE_PROCEDIMIENTO = @nombre, CONSULTA_SEL = @consulta, TEMP_TABLE = @tabla, TEMP_TABLE_STRUC = @struc, XML_ORIGIN = @xml WHERE ID = {0}", Id);
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@nombre", dbDetalle.Text);
                 cmd.Parameters.AddWithValue("@tabla", dbTablaTemporal.Text);
                 cmd.Parameters.AddWithValue("@struc", dbXML.Text);
-                cmd.Parameters.AddWithValue("@xml", dbURL);
+                cmd.Parameters.AddWithValue("@xml", dbURL.Text);
                 cmd.Parameters.AddWithValue("@consulta", dbQuery.Text);
                 try
                 {

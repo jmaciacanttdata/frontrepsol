@@ -57,7 +57,7 @@
             dbTablaTemporal.Location = new Point(13, 194);
             dbTablaTemporal.Margin = new Padding(4);
             dbTablaTemporal.Name = "dbTablaTemporal";
-            dbTablaTemporal.Size = new Size(488, 31);
+            dbTablaTemporal.Size = new Size(422, 31);
             dbTablaTemporal.TabIndex = 17;
             // 
             // label1
@@ -75,21 +75,21 @@
             dbDetalle.Location = new Point(13, 100);
             dbDetalle.Margin = new Padding(4);
             dbDetalle.Name = "dbDetalle";
-            dbDetalle.Size = new Size(488, 31);
+            dbDetalle.Size = new Size(422, 31);
             dbDetalle.TabIndex = 15;
             // 
             // dbURL
             // 
-            dbURL.Location = new Point(631, 100);
+            dbURL.Location = new Point(536, 100);
             dbURL.Margin = new Padding(4);
             dbURL.Name = "dbURL";
-            dbURL.Size = new Size(482, 31);
+            dbURL.Size = new Size(420, 31);
             dbURL.TabIndex = 15;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(631, 64);
+            label4.Location = new Point(536, 64);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(43, 25);
@@ -102,7 +102,7 @@
             dbQuery.Location = new Point(13, 274);
             dbQuery.Margin = new Padding(4);
             dbQuery.Name = "dbQuery";
-            dbQuery.Size = new Size(1100, 306);
+            dbQuery.Size = new Size(943, 255);
             dbQuery.TabIndex = 20;
             dbQuery.Text = "";
             // 
@@ -119,17 +119,17 @@
             // dbXML
             // 
             dbXML.BorderStyle = BorderStyle.None;
-            dbXML.Location = new Point(13, 633);
+            dbXML.Location = new Point(13, 574);
             dbXML.Margin = new Padding(4);
             dbXML.Name = "dbXML";
-            dbXML.Size = new Size(1100, 350);
+            dbXML.Size = new Size(943, 272);
             dbXML.TabIndex = 22;
             dbXML.Text = "";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(13, 604);
+            label6.Location = new Point(13, 545);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(130, 25);
@@ -138,7 +138,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(843, 1005);
+            btnCancel.Location = new Point(686, 874);
             btnCancel.Margin = new Padding(4);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(118, 36);
@@ -149,7 +149,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(995, 1005);
+            btnSave.Location = new Point(838, 874);
             btnSave.Margin = new Padding(4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(118, 36);
@@ -162,7 +162,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1136, 1052);
+            ClientSize = new Size(1016, 923);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(dbXML);

@@ -267,7 +267,7 @@ namespace AutoRepsol
                 if (confirmDelete == DialogResult.Yes)
                 {                    
                     int selectedId = (int)dbData.SelectedCells[0].Value;
-                    string Vertical = dbData.Rows[selectedId].Cells[3].Value.ToString();
+                    string Vertical = (string)dbData.SelectedCells[3].Value;
 
                     if (Vertical != "LO - Logistica")
                     {
@@ -297,7 +297,7 @@ namespace AutoRepsol
                         var query = "DELETE FROM LOGISTICA_SCRIPTS WHERE ID = @id";
 
                         SqlCommand cmd = new SqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("id", selectedId);
+                        cmd.Parameters.AddWithValue("@id", selectedId);
 
                         try
                         {
