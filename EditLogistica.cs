@@ -35,7 +35,7 @@ namespace AutoRepsol
             dbXML.ScrollBars = RichTextBoxScrollBars.Vertical | RichTextBoxScrollBars.Horizontal;
             this.Controls.Add(dbQuery);
             this.Controls.Add(dbXML);
-            var query = String.Format("SELECT LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL, LO.TEMP_TABLE, LO.TABLE_STRUC, LO.XML_ORIGIN FROM LOGISTICA_SCRIPTS AS LO WHERE ID={0}", IdCase);
+            var query = String.Format("SELECT LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL, LO.TEMP_TABLE, LO.TEMP_TABLE_STRUC, LO.XML_ORIGIN FROM LOGISTICA_SCRIPTS AS LO WHERE ID={0}", IdCase);
             SqlCommand cmd = new SqlCommand(query, conn);
             var reader = cmd.ExecuteReader();
             if (reader.Read())

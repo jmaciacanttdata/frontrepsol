@@ -54,11 +54,13 @@ namespace AutoRepsol
             dbData.Columns.Add("Id", "Id");
             dbData.Columns.Add("Detalle", "Detalle");
             dbData.Columns.Add("Consulta", "Consulta");
+            dbData.Columns.Add("Vertical", "Vertical");
 
             dbData.Columns[0].Width = (int)(dbData.Width * 0.1);
             dbData.Columns[1].Width = (int)(dbData.Width * 0.25);
-            dbData.Columns[2].Width = (int)(dbData.Width * 0.65);
+            dbData.Columns[2].Width = (int)(dbData.Width * 0.45);
             dbData.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dbData.Columns[3].Width = (int)(dbData.Width * 0.2);
         }
 
         public void GetDataSourceVertical(SqlConnection conn)
@@ -97,7 +99,7 @@ namespace AutoRepsol
             var querylog = "";
             if (cmbVertical.SelectedIndex == 0)
             {
-                query = "SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
+                query = "SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL, TV.Vertical FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
                 querylog = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO";
             }
             else if (cmbVertical.SelectedIndex == 5)
@@ -107,14 +109,21 @@ namespace AutoRepsol
             else
             {
                 var vertical = cmbVertical.Text;
-                query = String.Format("SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT WHERE TV.Vertical LIKE '{0}'", vertical);
+                query = String.Format("SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL, TV.Vertical FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT WHERE TV.Vertical LIKE '{0}'", vertical);
             }
 
             SqlCommand command = new SqlCommand(query, conn);
             var data = command.ExecuteReader();
             while (data.Read())
             {
-                dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2));
+                if (cmbVertical.SelectedIndex != 5)
+                {
+                    dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), data.GetString(3));
+                }
+                else
+                {
+                    dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), "LO - Logistica");
+                }
             }
             data.Close();
 
@@ -124,7 +133,7 @@ namespace AutoRepsol
                 data = command.ExecuteReader();
                 while (data.Read())
                 {
-                    dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2));
+                    dbData.Rows.Add(data.GetInt32(0), data.GetString(1), data.GetString(2), "LO - Logistica");
                 }
                 data.Close();
             }
@@ -194,12 +203,10 @@ namespace AutoRepsol
             try
             {
                 string IdRegistro = dbData.Rows[idRowSelected].Cells[0].Value.ToString();
-                string Detalle = dbData.Rows[idRowSelected].Cells[1].Value.ToString();
-                var query = String.Format("SELECT ID FROM LOGISTICA_SCRIPTS WHERE NOMBRE_PROCEDIMIENTO LIKE {0}", Detalle);
-                SqlCommand cmd = new SqlCommand(query, conn);
+                string Vertical = dbData.Rows[idRowSelected].Cells[3].Value.ToString();
                 try
                 {
-                    if (cmd.ExecuteNonQuery() != null)
+                    if (Vertical == "LO - Logistica")
                     {
                         var editLogis = new EditLogistica(System.Convert.ToInt32(IdRegistro), userDB, conn);
                         editLogis.FormClosed += new FormClosedEventHandler(RefreshData);
@@ -258,28 +265,52 @@ namespace AutoRepsol
             {
                 var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar la consulta seleccionada?", "Borrado de Consultas", MessageBoxButtons.YesNo);
                 if (confirmDelete == DialogResult.Yes)
-                {
-                    //TODO: Lanzar la query para eliminar el registro con id=caseId
+                {                    
                     int selectedId = (int)dbData.SelectedCells[0].Value;
-                    var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
-                    var queryVertical = "DELETE FROM TR_QUERY_VERTICAL WHERE IdQuery = @Id";
+                    string Vertical = dbData.Rows[selectedId].Cells[3].Value.ToString();
 
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    SqlCommand cmdVertical = new SqlCommand(queryVertical, conn);
+                    if (Vertical != "LO - Logistica")
+                    {
+                        //TODO: Lanzar la query para eliminar el registro con id=caseId
+                        var query = "delete from TR_OPTIMIZACION_AUTO_SCRIPT where ID = @Id";
+                        var queryVertical = "DELETE FROM TR_QUERY_VERTICAL WHERE IdQuery = @Id";
 
-                    cmd.Parameters.AddWithValue("@Id", selectedId);
-                    cmdVertical.Parameters.AddWithValue("Id", selectedId);
-                    try
-                    {
-                        cmd.ExecuteNonQuery();
-                        cmdVertical.ExecuteNonQuery();
-                        MessageBox.Show("La consulta ha sido eliminada correctamente.", "Borrado de Consultas");
-                        RefreshData(sender, e);
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        SqlCommand cmdVertical = new SqlCommand(queryVertical, conn);
+
+                        cmd.Parameters.AddWithValue("@Id", selectedId);
+                        cmdVertical.Parameters.AddWithValue("Id", selectedId);
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            cmdVertical.ExecuteNonQuery();
+                            MessageBox.Show("La consulta ha sido eliminada correctamente.", "Borrado de Consultas.");
+                            RefreshData(sender, e);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message);
+                        var query = "DELETE FROM LOGISTICA_SCRIPTS WHERE ID = @id";
+
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("id", selectedId);
+
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("La consulta ha sido eliminada correctamente.", "Borrado de consultas.");
+                            RefreshData(sender, e);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
+
                 }
             }
             catch (Exception ex)
