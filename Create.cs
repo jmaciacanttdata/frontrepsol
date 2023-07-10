@@ -32,6 +32,9 @@ namespace AutoRepsol
             dbVertical.DropDownStyle = ComboBoxStyle.DropDownList;
             dbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             dbRegulariza.DropDownStyle = ComboBoxStyle.DropDownList;
+            lblServer.Text = _configuration.GetSection("dbServer").Value;
+            lblCatalog.Text = _configuration.GetSection("dbDataBase").Value;
+            lblUserName.Text = userDB;
         }
 
         private void closeCreateForm(object sender, EventArgs e)

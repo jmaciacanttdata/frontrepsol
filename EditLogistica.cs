@@ -41,8 +41,8 @@ namespace AutoRepsol
             if (reader.Read())
             {
                 dbDetalle.Text = reader["NOMBRE_PROCEDIMIENTO"].ToString();
-                dbURL.Text = reader["TEMP_TABLE"].ToString();
-                dbTablaTemporal.Text = reader["XML_ORIGIN"].ToString();
+                dbURL.Text = reader["XML_ORIGIN"].ToString();
+                dbTablaTemporal.Text = reader["TEMP_TABLE"].ToString();
                 dbXML.Text = reader["TEMP_TABLE_STRUC"].ToString();
                 dbQuery.Text = reader["CONSULTA_SEL"].ToString();
             }
@@ -130,6 +130,11 @@ namespace AutoRepsol
                 conn.Close();
                 Environment.Exit(0);
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
