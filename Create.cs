@@ -31,7 +31,7 @@ namespace AutoRepsol
             dbTipo.SelectedItem = null;
             dbVertical.DropDownStyle = ComboBoxStyle.DropDownList;
             dbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
-            dbRegulariza.DropDownStyle = ComboBoxStyle.DropDownList;           
+            dbRegulariza.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void closeCreateForm(object sender, EventArgs e)
@@ -148,6 +148,31 @@ namespace AutoRepsol
             //TODO: Comprobar que todos los campos están rellenos y encaso de no estar almenos 1, poner el flag a FALSE
 
             return isCompleted;
+        }
+
+        private void CLoseApp(object sender, FormClosingEventArgs e)
+        {
+            if (CloseCancel() == false)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                conn.Close();
+                Environment.Exit(0);
+            }
+        }
+
+        public static bool CloseCancel()
+        {
+            const string message = "¿Está seguro de querer cerrar la aplicación?";
+            const string caption = "AutoRepsol";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+                return true;
+            else
+                return false;
         }
 
         /*public void AddLineNumbers()

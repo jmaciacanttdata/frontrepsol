@@ -93,24 +93,33 @@ namespace AutoRepsol
             };
         }
 
-        public void ChargeData()
+        public void ChargeData(string txtSearch = null)
         {
             PrepareDataGridView();
             var query = "";
             var querylog = "";
+            string whereConditionOS = " WHERE 1=1";
+            string whereConditionLO = " WHERE 1=1";
+
+            if (txtSearch != null && txtSearch != "")
+            {
+                whereConditionOS += " AND OS.CONSULTA_SEL LIKE '%" + txtSearch + "%'";
+                whereConditionLO += " AND LO.CONSULTA_SEL LIKE '%" + txtSearch + "%'";
+            }
+
             if (cmbVertical.SelectedIndex == 0)
             {
-                query = "SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL, TV.Vertical FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT";
-                querylog = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO";
+                query = "SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL, TV.Vertical FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT" + whereConditionOS;
+                querylog = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO" + whereConditionLO;
             }
             else if (cmbVertical.SelectedIndex == 5)
             {
-                query = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO";
+                query = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO" + whereConditionLO;
             }
             else
             {
                 var vertical = cmbVertical.Text;
-                query = String.Format("SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL, TV.Vertical FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT WHERE TV.Vertical LIKE '{0}'", vertical);
+                query = String.Format("SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL, TV.Vertical FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT " + whereConditionOS + " AND TV.Vertical LIKE '{0}'", vertical);
             }
 
             SqlCommand command = new SqlCommand(query, conn);
@@ -266,7 +275,7 @@ namespace AutoRepsol
             {
                 var confirmDelete = MessageBox.Show("¿Está seguro de querer eliminar la consulta seleccionada?", "Borrado de Consultas", MessageBoxButtons.YesNo);
                 if (confirmDelete == DialogResult.Yes)
-                {                    
+                {
                     int selectedId = (int)dbData.SelectedCells[0].Value;
                     string Vertical = (string)dbData.SelectedCells[3].Value;
 
@@ -333,6 +342,51 @@ namespace AutoRepsol
             var createForm = new CreateLogistica(userDB, conn);
             createForm.Show();
             this.Dispose();
+        }
+
+        private void searchItem(object sender, KeyEventArgs e)
+        {
+        }
+
+        private void SearchItem(object sender, EventArgs e)
+        {
+            dbData.ClearSelection();
+            string txtSearch = txtBuscar.Text;
+            dbData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            if (txtSearch != "")
+            {
+                try
+                {
+                    bool valueResult = false;
+                    foreach (DataGridViewRow r in dbData.Rows)
+                    {
+                        for (int i = 0; i < r.Cells.Count; i++)
+                        {
+                            if (r.Cells[i].Value != null && r.Cells[i].Value.ToString().Contains(txtSearch))
+                            {
+                                int rowIndex = r.Index;
+                                dbData.Rows[rowIndex].Selected = true;
+                                valueResult = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!valueResult)
+                    {
+                        MessageBox.Show("No se encontraron registros que contengan el literal: " + txtSearch, "Not Found");
+                        return;
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+            }
+            else
+            {
+                dbData.ClearSelection();
+            }
         }
     }
 }

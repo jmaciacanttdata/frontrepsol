@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Installer));
             pictureBox1 = new PictureBox();
-            iprogress = new ProgressBar();
             labelInstall = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -45,19 +44,11 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // iprogress
-            // 
-            iprogress.Dock = DockStyle.Bottom;
-            iprogress.Location = new Point(0, 416);
-            iprogress.Name = "iprogress";
-            iprogress.Size = new Size(800, 34);
-            iprogress.TabIndex = 1;
-            // 
             // labelInstall
             // 
             labelInstall.AutoSize = true;
             labelInstall.Dock = DockStyle.Bottom;
-            labelInstall.Location = new Point(0, 391);
+            labelInstall.Location = new Point(0, 425);
             labelInstall.Name = "labelInstall";
             labelInstall.Size = new Size(179, 25);
             labelInstall.TabIndex = 2;
@@ -70,7 +61,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(labelInstall);
-            Controls.Add(iprogress);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Installer";
@@ -85,7 +75,6 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private ProgressBar iprogress;
         private Label labelInstall;
     }
 }

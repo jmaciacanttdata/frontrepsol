@@ -170,5 +170,30 @@ namespace AutoRepsol
             else
                 MessageBox.Show("Debes rellenar todos los campos");
         }
+
+        private void CLoseApp(object sender, FormClosingEventArgs e)
+        {
+            if (CloseCancel() == false)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                conn.Close();
+                Environment.Exit(0);
+            }
+        }
+
+        public static bool CloseCancel()
+        {
+            const string message = "¿Está seguro de querer cerrar la aplicación?";
+            const string caption = "AutoRepsol";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+                return true;
+            else
+                return false;
+        }
     }
 }

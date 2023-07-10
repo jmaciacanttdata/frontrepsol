@@ -25,6 +25,9 @@ namespace AutoRepsol
             passDB = _configuration.GetSection("dbEmergenciasPassword").Value;
             conn = _conn;
             userDB = dbUser;
+            lblServer.Text = _configuration.GetSection("dbServer").Value;
+            lblCatalog.Text = _configuration.GetSection("dbDataBase").Value;
+            lblUserName.Text = userDB;
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
@@ -83,6 +86,60 @@ namespace AutoRepsol
             //TODO: Comprobar que todos los campos están rellenos y encaso de no estar almenos 1, poner el flag a FALSE
 
             return isCompleted;
+        }
+
+        private void CLoseApp(object sender, FormClosingEventArgs e)
+        {
+            if (CloseCancel() == false)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                conn.Close();
+                Environment.Exit(0);
+            }
+        }
+
+        public static bool CloseCancel()
+        {
+            const string message = "¿Está seguro de querer cerrar la aplicación?";
+            const string caption = "AutoRepsol";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+                return true;
+            else
+                return false;
+        }
+
+        private bool CloseSession()
+        {
+            string message = "";
+
+            if (lblUserName.Text != null)
+                message = "¿Está seguro de querer cerrar la sesión del usuario " + lblUserName.Text + "?";
+            else
+                message = "¿Está seguro de querer cerrar la sesión del usuario?";
+            string caption = "AutoRepsol";
+
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+                return true;
+            else
+                return false;
+        }
+
+        private void CloseSession(object sender, EventArgs e)
+        {
+            if (CloseSession() == true)
+            {
+                conn.Close();
+                var login = new Login();
+                login.Show();
+                this.Hide();
+            }
         }
     }
 }

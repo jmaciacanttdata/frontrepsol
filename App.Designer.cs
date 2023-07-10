@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             panel1 = new Panel();
+            txtBuscar = new TextBox();
             button2 = new Button();
             pictureBox1 = new PictureBox();
             cmbVertical = new ComboBox();
@@ -53,6 +54,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(txtBuscar);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(cmbVertical);
@@ -64,6 +66,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1284, 60);
             panel1.TabIndex = 0;
+            // 
+            // txtBuscar
+            // 
+            txtBuscar.Location = new Point(676, 13);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.PlaceholderText = "Buscar...";
+            txtBuscar.Size = new Size(293, 31);
+            txtBuscar.TabIndex = 7;
+            txtBuscar.TextChanged += SearchItem;
             // 
             // button2
             // 
@@ -159,10 +170,10 @@
             panel3.Controls.Add(lblUserName);
             panel3.Controls.Add(label1);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 662);
+            panel3.Location = new Point(0, 669);
             panel3.Margin = new Padding(2, 4, 2, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1284, 39);
+            panel3.Size = new Size(1284, 32);
             panel3.TabIndex = 2;
             // 
             // lblCatalog
@@ -235,12 +246,14 @@
             Controls.Add(panel1);
             Margin = new Padding(2, 4, 2, 4);
             MaximizeBox = false;
+            MinimumSize = new Size(1200, 700);
             Name = "App";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AutoRepsol";
             WindowState = FormWindowState.Maximized;
             FormClosing += CLoseApp;
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dbData).EndInit();
@@ -266,5 +279,6 @@
         private ComboBox cmbVertical;
         private PictureBox pictureBox1;
         private Button button2;
+        private TextBox txtBuscar;
     }
 }

@@ -31,7 +31,7 @@ namespace AutoRepsol
 
         void GetDataCase(int IdCase)
         {
-            dbQuery.ScrollBars = (RichTextBoxScrollBars)ScrollBars.Vertical;
+            //dbQuery.ScrollBars = (ScrollBars)(RichTextBoxScrollBars)ScrollBars.Vertical;
             dbXML.ScrollBars = RichTextBoxScrollBars.Vertical | RichTextBoxScrollBars.Horizontal;
             this.Controls.Add(dbQuery);
             this.Controls.Add(dbXML);
@@ -41,8 +41,8 @@ namespace AutoRepsol
             if (reader.Read())
             {
                 dbDetalle.Text = reader["NOMBRE_PROCEDIMIENTO"].ToString();
-                dbTablaTemporal.Text = reader["TEMP_TABLE"].ToString();
-                dbURL.Text = reader["XML_ORIGIN"].ToString();
+                dbURL.Text = reader["TEMP_TABLE"].ToString();
+                dbTablaTemporal.Text = reader["XML_ORIGIN"].ToString();
                 dbXML.Text = reader["TEMP_TABLE_STRUC"].ToString();
                 dbQuery.Text = reader["CONSULTA_SEL"].ToString();
             }
@@ -54,11 +54,11 @@ namespace AutoRepsol
             bool isCompleted = true;
             if (String.IsNullOrEmpty(dbDetalle.Text))
                 isCompleted = false;
-            else if (String.IsNullOrEmpty(dbTablaTemporal.Text))
+            else if (String.IsNullOrEmpty(dbURL.Text))
                 isCompleted = false;
             else if (String.IsNullOrEmpty(dbXML.Text))
                 isCompleted = false;
-            else if (String.IsNullOrEmpty(dbURL.Text))
+            else if (String.IsNullOrEmpty(dbTablaTemporal.Text))
                 isCompleted = false;
             else if (String.IsNullOrEmpty(dbQuery.Text))
                 isCompleted = false;
@@ -77,9 +77,9 @@ namespace AutoRepsol
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@nombre", dbDetalle.Text);
-                cmd.Parameters.AddWithValue("@tabla", dbTablaTemporal.Text);
+                cmd.Parameters.AddWithValue("@tabla", dbURL.Text);
                 cmd.Parameters.AddWithValue("@struc", dbXML.Text);
-                cmd.Parameters.AddWithValue("@xml", dbURL.Text);
+                cmd.Parameters.AddWithValue("@xml", dbTablaTemporal.Text);
                 cmd.Parameters.AddWithValue("@consulta", dbQuery.Text);
                 try
                 {
@@ -105,6 +105,31 @@ namespace AutoRepsol
             var app = new App(userDB, conn);
             app.Show();
             this.Dispose(true);
+        }
+
+        public static bool CloseCancel()
+        {
+            const string message = "¿Está seguro de querer cerrar la aplicación?";
+            const string caption = "AutoRepsol";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+                return true;
+            else
+                return false;
+        }
+
+        private void CLoseApp(object sender, FormClosingEventArgs e)
+        {
+            if (CloseCancel() == false)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                conn.Close();
+                Environment.Exit(0);
+            }
         }
     }
 }

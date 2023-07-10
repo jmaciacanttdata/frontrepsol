@@ -192,6 +192,7 @@
             Name = "Edit";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Edit";
+            FormClosing += CLoseApp;
             ResumeLayout(false);
             PerformLayout();
         }
