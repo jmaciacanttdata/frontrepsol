@@ -36,6 +36,8 @@
             dbQuery = new RichTextBox();
             label4 = new Label();
             panel3 = new Panel();
+            label2 = new Label();
+            dbURL = new TextBox();
             label3 = new Label();
             dbTablaTemporal = new TextBox();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -43,8 +45,6 @@
             label1 = new Label();
             dbDetalle = new TextBox();
             panel2 = new Panel();
-            label2 = new Label();
-            dbURL = new TextBox();
             label8 = new Label();
             lblUserName = new Label();
             label7 = new Label();
@@ -142,19 +142,37 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(label3);
-            panel3.Controls.Add(dbTablaTemporal);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(dbURL);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 118);
             panel3.Name = "panel3";
             panel3.Size = new Size(1252, 129);
             panel3.TabIndex = 31;
             // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Location = new Point(29, 23);
+            label2.Name = "label2";
+            label2.Size = new Size(43, 25);
+            label2.TabIndex = 27;
+            label2.Text = "URL";
+            // 
+            // dbURL
+            // 
+            dbURL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dbURL.Location = new Point(29, 51);
+            dbURL.Name = "dbURL";
+            dbURL.Size = new Size(1187, 31);
+            dbURL.TabIndex = 0;
+            // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(29, 31);
+            label3.Location = new Point(12, 15);
             label3.Name = "label3";
             label3.Size = new Size(201, 25);
             label3.TabIndex = 27;
@@ -163,9 +181,9 @@
             // dbTablaTemporal
             // 
             dbTablaTemporal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dbTablaTemporal.Location = new Point(29, 59);
+            dbTablaTemporal.Location = new Point(12, 43);
             dbTablaTemporal.Name = "dbTablaTemporal";
-            dbTablaTemporal.Size = new Size(1207, 31);
+            dbTablaTemporal.Size = new Size(575, 31);
             dbTablaTemporal.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -214,31 +232,13 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(dbURL);
+            panel2.Controls.Add(dbTablaTemporal);
+            panel2.Controls.Add(label3);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(629, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(620, 112);
             panel2.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Location = new Point(34, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(43, 25);
-            label2.TabIndex = 27;
-            label2.Text = "URL";
-            // 
-            // dbURL
-            // 
-            dbURL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dbURL.Location = new Point(34, 43);
-            dbURL.Name = "dbURL";
-            dbURL.Size = new Size(573, 31);
-            dbURL.TabIndex = 0;
             // 
             // label8
             // 
@@ -368,7 +368,7 @@
             MinimumSize = new Size(780, 700);
             Name = "CreateLogistica";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CreateLogistica";
+            Text = "AutoRepsol";
             WindowState = FormWindowState.Maximized;
             FormClosing += CLoseApp;
             tableLayoutPanel2.ResumeLayout(false);

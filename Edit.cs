@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace AutoRepsol
 {
@@ -20,7 +19,6 @@ namespace AutoRepsol
         SqlConnection conn;
         string userDB;
         private readonly IConfiguration _configuration;
-
         public Edit(int IdCase, string dbUser, SqlConnection _conn)
         {
             InitializeComponent();
@@ -34,9 +32,10 @@ namespace AutoRepsol
             dbVertical.DropDownStyle = ComboBoxStyle.DropDownList;
             dbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             dbRegulariza.DropDownStyle = ComboBoxStyle.DropDownList;
-
+            lblServer.Text = _configuration.GetSection("dbServer").Value;
+            lblCatalog.Text = _configuration.GetSection("dbDataBase").Value;
+            lblUserName.Text = userDB;
         }
-
         public void GetDataSourceType(SqlConnection conn)
         {
             string query = "SELECT ID, TIPO FROM TR_OPTIMIZACION_AUTO_TIPO_SCRIPT ORDER BY ID ASC;";
@@ -82,7 +81,7 @@ namespace AutoRepsol
         public void GetDataCase(int IdCase)
         {
             dbQuery.ScrollBars = ScrollBars.Vertical;
-            this.Controls.Add(dbQuery);
+            //this.Controls.Add(dbQuery);
             var query = String.Format("SELECT OS.ID, TV.Id, TV.Vertical, OTS.TIPO, OS.NOMBRE_PROCEDIMIENTO, OS.REGULARIZA, OS.CONSULTA_SEL FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT where QV.IdQuery={0}", IdCase);
             SqlCommand cmd = new SqlCommand(query, conn);
             var reader = cmd.ExecuteReader();

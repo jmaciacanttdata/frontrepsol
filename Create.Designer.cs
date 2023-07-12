@@ -38,12 +38,10 @@
             panel4 = new Panel();
             label5 = new Label();
             dbTipo = new ComboBox();
-            panel5 = new Panel();
-            label4 = new Label();
-            dbQuery = new TextBox();
-            panel6 = new Panel();
-            btnCancel = new Button();
-            btnSave = new Button();
+            label1 = new Label();
+            panel1 = new Panel();
+            dbDetalle = new TextBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
             panel7 = new Panel();
             lblCatalog = new Label();
             label6 = new Label();
@@ -51,17 +49,23 @@
             label7 = new Label();
             lblUserName = new Label();
             label8 = new Label();
-            label1 = new Label();
-            panel1 = new Panel();
-            dbDetalle = new TextBox();
+            panel6 = new Panel();
+            btnCancel = new Button();
+            btnSave = new Button();
+            dbQuery = new TextBox();
+            panel5 = new Panel();
+            panel8 = new Panel();
+            label4 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
-            panel5.SuspendLayout();
-            panel6.SuspendLayout();
-            panel7.SuspendLayout();
             panel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            panel7.SuspendLayout();
+            panel6.SuspendLayout();
+            panel5.SuspendLayout();
+            panel8.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -129,7 +133,7 @@
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(89, 25);
+            label3.Location = new Point(59, 25);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(92, 25);
@@ -141,10 +145,10 @@
             dbRegulariza.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dbRegulariza.FormattingEnabled = true;
             dbRegulariza.Items.AddRange(new object[] { "Si", "No" });
-            dbRegulariza.Location = new Point(90, 56);
+            dbRegulariza.Location = new Point(59, 56);
             dbRegulariza.Margin = new Padding(4, 3, 4, 3);
             dbRegulariza.Name = "dbRegulariza";
-            dbRegulariza.Size = new Size(184, 33);
+            dbRegulariza.Size = new Size(254, 33);
             dbRegulariza.TabIndex = 16;
             // 
             // panel4
@@ -177,70 +181,50 @@
             dbTipo.Size = new Size(395, 33);
             dbTipo.TabIndex = 23;
             // 
-            // panel5
+            // label1
             // 
-            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel5.Controls.Add(label4);
-            panel5.Controls.Add(dbQuery);
-            panel5.Location = new Point(3, 279);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(1264, 416);
-            panel5.TabIndex = 14;
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Location = new Point(40, 19);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(66, 25);
+            label1.TabIndex = 3;
+            label1.Text = "Detalle";
             // 
-            // label4
+            // panel1
             // 
-            label4.AutoSize = true;
-            label4.Dock = DockStyle.Top;
-            label4.Location = new Point(0, 0);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(118, 25);
-            label4.TabIndex = 19;
-            label4.Text = "Consulta SQL";
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(dbDetalle);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1252, 120);
+            panel1.TabIndex = 13;
             // 
-            // dbQuery
+            // dbDetalle
             // 
-            dbQuery.Dock = DockStyle.Bottom;
-            dbQuery.Location = new Point(0, 28);
-            dbQuery.Margin = new Padding(4, 3, 4, 3);
-            dbQuery.Multiline = true;
-            dbQuery.Name = "dbQuery";
-            dbQuery.Size = new Size(1264, 388);
-            dbQuery.TabIndex = 18;
+            dbDetalle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dbDetalle.Location = new Point(40, 48);
+            dbDetalle.Margin = new Padding(4);
+            dbDetalle.Name = "dbDetalle";
+            dbDetalle.Size = new Size(1181, 31);
+            dbDetalle.TabIndex = 2;
             // 
-            // panel6
+            // tableLayoutPanel2
             // 
-            panel6.Controls.Add(btnCancel);
-            panel6.Controls.Add(btnSave);
-            panel6.Dock = DockStyle.Bottom;
-            panel6.Location = new Point(0, 742);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(1252, 46);
-            panel6.TabIndex = 15;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Dock = DockStyle.Right;
-            btnCancel.Location = new Point(954, 0);
-            btnCancel.Margin = new Padding(4);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(149, 46);
-            btnCancel.TabIndex = 11;
-            btnCancel.Text = "Cancelar";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += closeCreateForm;
-            // 
-            // btnSave
-            // 
-            btnSave.Dock = DockStyle.Right;
-            btnSave.Location = new Point(1103, 0);
-            btnSave.Margin = new Padding(4);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(149, 46);
-            btnSave.TabIndex = 10;
-            btnSave.Text = "Guardar";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += createCase;
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(panel7, 0, 1);
+            tableLayoutPanel2.Controls.Add(panel6, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Bottom;
+            tableLayoutPanel2.Location = new Point(0, 701);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(1252, 87);
+            tableLayoutPanel2.TabIndex = 20;
             // 
             // panel7
             // 
@@ -250,12 +234,12 @@
             panel7.Controls.Add(label7);
             panel7.Controls.Add(lblUserName);
             panel7.Controls.Add(label8);
-            panel7.Dock = DockStyle.Bottom;
-            panel7.Location = new Point(0, 698);
+            panel7.Dock = DockStyle.Fill;
+            panel7.Location = new Point(2, 47);
             panel7.Margin = new Padding(2, 4, 2, 4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(1252, 44);
-            panel7.TabIndex = 36;
+            panel7.Size = new Size(1248, 36);
+            panel7.TabIndex = 42;
             // 
             // lblCatalog
             // 
@@ -322,35 +306,79 @@
             label8.TabIndex = 0;
             label8.Text = "User:";
             // 
-            // label1
+            // panel6
             // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Location = new Point(40, 19);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(66, 25);
-            label1.TabIndex = 3;
-            label1.Text = "Detalle";
+            panel6.Controls.Add(btnCancel);
+            panel6.Controls.Add(btnSave);
+            panel6.Dock = DockStyle.Fill;
+            panel6.Location = new Point(3, 3);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(1246, 37);
+            panel6.TabIndex = 41;
             // 
-            // panel1
+            // btnCancel
             // 
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(dbDetalle);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1252, 120);
-            panel1.TabIndex = 13;
+            btnCancel.Dock = DockStyle.Right;
+            btnCancel.Location = new Point(948, 0);
+            btnCancel.Margin = new Padding(4);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(149, 37);
+            btnCancel.TabIndex = 11;
+            btnCancel.Text = "Cancelar";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += closeCreateForm;
             // 
-            // dbDetalle
+            // btnSave
             // 
-            dbDetalle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dbDetalle.Location = new Point(40, 48);
-            dbDetalle.Margin = new Padding(4);
-            dbDetalle.Name = "dbDetalle";
-            dbDetalle.Size = new Size(1123, 31);
-            dbDetalle.TabIndex = 2;
+            btnSave.Dock = DockStyle.Right;
+            btnSave.Location = new Point(1097, 0);
+            btnSave.Margin = new Padding(4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(149, 37);
+            btnSave.TabIndex = 10;
+            btnSave.Text = "Guardar";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += createCase;
+            // 
+            // dbQuery
+            // 
+            dbQuery.Dock = DockStyle.Fill;
+            dbQuery.Location = new Point(0, 26);
+            dbQuery.Margin = new Padding(4, 3, 4, 3);
+            dbQuery.Multiline = true;
+            dbQuery.Name = "dbQuery";
+            dbQuery.Size = new Size(1264, 390);
+            dbQuery.TabIndex = 18;
+            // 
+            // panel5
+            // 
+            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel5.Controls.Add(dbQuery);
+            panel5.Controls.Add(panel8);
+            panel5.Location = new Point(3, 279);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(1264, 416);
+            panel5.TabIndex = 14;
+            // 
+            // panel8
+            // 
+            panel8.Controls.Add(label4);
+            panel8.Dock = DockStyle.Top;
+            panel8.Location = new Point(0, 0);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1264, 26);
+            panel8.TabIndex = 20;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Dock = DockStyle.Top;
+            label4.Location = new Point(0, 0);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(118, 25);
+            label4.TabIndex = 20;
+            label4.Text = "Consulta SQL";
             // 
             // Create
             // 
@@ -358,16 +386,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1252, 788);
-            Controls.Add(panel7);
-            Controls.Add(panel6);
+            Controls.Add(tableLayoutPanel2);
             Controls.Add(panel5);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
             Margin = new Padding(4);
-            MinimumSize = new Size(780, 700);
+            MinimumSize = new Size(800, 840);
             Name = "Create";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Regulariza";
+            Text = "AutoRepsol";
             WindowState = FormWindowState.Maximized;
             FormClosing += CLoseApp;
             tableLayoutPanel1.ResumeLayout(false);
@@ -377,13 +404,16 @@
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            panel6.ResumeLayout(false);
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -398,9 +428,10 @@
         private Panel panel4;
         private Label label5;
         private ComboBox dbTipo;
-        private Panel panel5;
-        private TextBox dbQuery;
-        private Label label4;
+        private Label label1;
+        private Panel panel1;
+        private TextBox dbDetalle;
+        private TableLayoutPanel tableLayoutPanel2;
         private Panel panel6;
         private Button btnCancel;
         private Button btnSave;
@@ -411,8 +442,9 @@
         private Label label7;
         private Label lblUserName;
         private Label label8;
-        private Label label1;
-        private Panel panel1;
-        private TextBox dbDetalle;
+        private TextBox dbQuery;
+        private Panel panel5;
+        private Panel panel8;
+        private Label label4;
     }
 }

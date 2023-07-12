@@ -27,14 +27,17 @@ namespace AutoRepsol
             userDB = dbUser;
             conn = _conn;
             GetDataCase(IdCase);
+            lblServer.Text = _configuration.GetSection("dbServer").Value;
+            lblCatalog.Text = _configuration.GetSection("dbDataBase").Value;
+            lblUserName.Text = userDB;
         }
 
         void GetDataCase(int IdCase)
         {
             //dbQuery.ScrollBars = (ScrollBars)(RichTextBoxScrollBars)ScrollBars.Vertical;
             dbXML.ScrollBars = RichTextBoxScrollBars.Vertical | RichTextBoxScrollBars.Horizontal;
-            this.Controls.Add(dbQuery);
-            this.Controls.Add(dbXML);
+            //this.Controls.Add(dbQuery);
+            //this.Controls.Add(dbXML);
             var query = String.Format("SELECT LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL, LO.TEMP_TABLE, LO.TEMP_TABLE_STRUC, LO.XML_ORIGIN FROM LOGISTICA_SCRIPTS AS LO WHERE ID={0}", IdCase);
             SqlCommand cmd = new SqlCommand(query, conn);
             var reader = cmd.ExecuteReader();

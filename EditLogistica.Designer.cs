@@ -47,6 +47,8 @@
             dbQuery = new RichTextBox();
             label4 = new Label();
             panel3 = new Panel();
+            label2 = new Label();
+            dbURL = new TextBox();
             label3 = new Label();
             dbTablaTemporal = new TextBox();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -54,8 +56,6 @@
             label1 = new Label();
             dbDetalle = new TextBox();
             panel8 = new Panel();
-            label2 = new Label();
-            dbURL = new TextBox();
             panel7.SuspendLayout();
             panel6.SuspendLayout();
             panel1.SuspendLayout();
@@ -97,6 +97,7 @@
             btnCancel.TabIndex = 26;
             btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
@@ -108,6 +109,7 @@
             btnSave.TabIndex = 25;
             btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // panel1
             // 
@@ -265,19 +267,37 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(label3);
-            panel3.Controls.Add(dbTablaTemporal);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(dbURL);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 118);
             panel3.Name = "panel3";
             panel3.Size = new Size(1252, 129);
             panel3.TabIndex = 39;
             // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Location = new Point(29, 15);
+            label2.Name = "label2";
+            label2.Size = new Size(43, 25);
+            label2.TabIndex = 27;
+            label2.Text = "URL";
+            // 
+            // dbURL
+            // 
+            dbURL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dbURL.Location = new Point(29, 43);
+            dbURL.Name = "dbURL";
+            dbURL.Size = new Size(1212, 31);
+            dbURL.TabIndex = 0;
+            // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(29, 31);
+            label3.Location = new Point(20, 15);
             label3.Name = "label3";
             label3.Size = new Size(201, 25);
             label3.TabIndex = 27;
@@ -286,9 +306,9 @@
             // dbTablaTemporal
             // 
             dbTablaTemporal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dbTablaTemporal.Location = new Point(29, 59);
+            dbTablaTemporal.Location = new Point(20, 43);
             dbTablaTemporal.Name = "dbTablaTemporal";
-            dbTablaTemporal.Size = new Size(1207, 31);
+            dbTablaTemporal.Size = new Size(575, 31);
             dbTablaTemporal.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -337,31 +357,13 @@
             // 
             // panel8
             // 
-            panel8.Controls.Add(label2);
-            panel8.Controls.Add(dbURL);
+            panel8.Controls.Add(dbTablaTemporal);
+            panel8.Controls.Add(label3);
             panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(629, 3);
             panel8.Name = "panel8";
             panel8.Size = new Size(620, 112);
             panel8.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Location = new Point(34, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(43, 25);
-            label2.TabIndex = 27;
-            label2.Text = "URL";
-            // 
-            // dbURL
-            // 
-            dbURL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dbURL.Location = new Point(34, 43);
-            dbURL.Name = "dbURL";
-            dbURL.Size = new Size(556, 31);
-            dbURL.TabIndex = 0;
             // 
             // EditLogistica
             // 
@@ -376,7 +378,7 @@
             MaximizeBox = false;
             Name = "EditLogistica";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EditLogistica";
+            Text = "AutoRepsol";
             WindowState = FormWindowState.Maximized;
             FormClosing += CLoseApp;
             panel7.ResumeLayout(false);
@@ -413,7 +415,6 @@
         private RichTextBox dbXML;
         private Label label5;
         private Panel panel4;
-        private RichTextBox dbQuery;
         private Label label4;
         private Panel panel3;
         private Label label3;
@@ -428,5 +429,6 @@
         private Panel panel6;
         private Button btnCancel;
         private Button btnSave;
+        private RichTextBox dbQuery;
     }
 }
