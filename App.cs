@@ -112,7 +112,7 @@ namespace AutoRepsol
                 query = "SELECT OS.ID, OS.NOMBRE_PROCEDIMIENTO, OS.CONSULTA_SEL, TV.Vertical FROM TR_QUERY_VERTICAL QV INNER JOIN TR_VERTICAL TV ON TV.Id=QV.IdVertical INNER JOIN TR_OPTIMIZACION_AUTO_SCRIPT OS ON OS.ID = QV.IdQuery INNER JOIN TR_OPTIMIZACION_AUTO_TIPO_SCRIPT OTS ON OTS.ID = OS.ID_TIPO_SCRIPT" + whereConditionOS;
                 querylog = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO" + whereConditionLO;
             }
-            else if (cmbVertical.SelectedIndex == 5)
+            else if (cmbVertical.Text == "LO - Logística")
             {
                 query = "SELECT LO.ID, LO.NOMBRE_PROCEDIMIENTO, LO.CONSULTA_SEL FROM LOGISTICA_SCRIPTS AS LO" + whereConditionLO;
             }
@@ -387,6 +387,13 @@ namespace AutoRepsol
             {
                 dbData.ClearSelection();
             }
+        }
+
+        private void btnAlert_Click(object sender, EventArgs e)
+        {
+            var AlertEdit = new AlertEdit(userDB, conn);
+            AlertEdit.Show();
+            this.Dispose();
         }
     }
 }

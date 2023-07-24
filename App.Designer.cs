@@ -45,6 +45,7 @@
             label2 = new Label();
             lblUserName = new Label();
             label1 = new Label();
+            btnAlert = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -54,6 +55,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnAlert);
             panel1.Controls.Add(txtBuscar);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(pictureBox1);
@@ -69,7 +71,7 @@
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(676, 13);
+            txtBuscar.Location = new Point(793, 13);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.PlaceholderText = "Buscar...";
             txtBuscar.Size = new Size(293, 31);
@@ -101,7 +103,7 @@
             // 
             cmbVertical.FormattingEnabled = true;
             cmbVertical.Items.AddRange(new object[] { "Todos", "BO - Backoffice", "FO - Frontoffice", "FA - Facturación", "PM - Pricing", "LO - Logística" });
-            cmbVertical.Location = new Point(464, 12);
+            cmbVertical.Location = new Point(588, 11);
             cmbVertical.Name = "cmbVertical";
             cmbVertical.Size = new Size(182, 33);
             cmbVertical.TabIndex = 2;
@@ -236,6 +238,16 @@
             label1.TabIndex = 0;
             label1.Text = "User:";
             // 
+            // btnAlert
+            // 
+            btnAlert.Location = new Point(458, 12);
+            btnAlert.Name = "btnAlert";
+            btnAlert.Size = new Size(112, 34);
+            btnAlert.TabIndex = 8;
+            btnAlert.Text = "Edit Alert";
+            btnAlert.UseVisualStyleBackColor = true;
+            btnAlert.Click += btnAlert_Click;
+            // 
             // App
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -280,5 +292,6 @@
         private PictureBox pictureBox1;
         private Button button2;
         private TextBox txtBuscar;
+        private Button btnAlert;
     }
 }

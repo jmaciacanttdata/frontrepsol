@@ -257,3 +257,5 @@ C:\Users\cbledaal\Desktop\proyectos2\repsol\frontrepsol\obj\Debug\net6.0-windows
 C:\Users\cbledaal\Desktop\proyectos2\repsol\frontrepsol\obj\Debug\net6.0-windows\AutoRepsol.EditLogistica.resources
 C:\Users\hboixmar\Documents\GitHub\frontrepsol\obj\Debug\net6.0-windows\AutoRepsol.CreateLogistica.resources
 C:\Users\hboixmar\Documents\GitHub\frontrepsol\obj\Debug\net6.0-windows\AutoRepsol.EditLogistica.resources
+C:\Users\cbledaal\Desktop\proyectos2\repsol\frontrepsol\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\cbledaal\Desktop\proyectos2\repsol\frontrepsol\obj\Debug\net6.0-windows\AutoRepsol.AlertEdit.resources

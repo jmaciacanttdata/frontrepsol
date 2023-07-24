@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hboixmar\\Documents\\GitHub\\frontrepsol\\AutoRepsol.csproj": {}
+    "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\AutoRepsol.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hboixmar\\Documents\\GitHub\\frontrepsol\\AutoRepsol.csproj": {
+    "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\AutoRepsol.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hboixmar\\Documents\\GitHub\\frontrepsol\\AutoRepsol.csproj",
+        "projectUniqueName": "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\AutoRepsol.csproj",
         "projectName": "AutoRepsol",
-        "projectPath": "C:\\Users\\hboixmar\\Documents\\GitHub\\frontrepsol\\AutoRepsol.csproj",
-        "packagesPath": "C:\\Users\\hboixmar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hboixmar\\Documents\\GitHub\\frontrepsol\\obj\\",
+        "projectPath": "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\AutoRepsol.csproj",
+        "packagesPath": "C:\\Users\\cbledaal\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cbledaal\\Desktop\\proyectos2\\repsol\\frontrepsol\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hboixmar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cbledaal\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -51,6 +51,10 @@
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

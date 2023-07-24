@@ -16,6 +16,9 @@
     <Compile Update="EditLogistica.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AlertEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Installer.cs">
       <SubType>Form</SubType>
     </Compile>
