@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             panel1 = new Panel();
+            btnAlert = new Button();
             txtBuscar = new TextBox();
             button2 = new Button();
             pictureBox1 = new PictureBox();
@@ -45,7 +46,6 @@
             label2 = new Label();
             lblUserName = new Label();
             label1 = new Label();
-            btnAlert = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -69,9 +69,19 @@
             panel1.Size = new Size(1284, 60);
             panel1.TabIndex = 0;
             // 
+            // btnAlert
+            // 
+            btnAlert.Location = new Point(455, 11);
+            btnAlert.Name = "btnAlert";
+            btnAlert.Size = new Size(184, 34);
+            btnAlert.TabIndex = 8;
+            btnAlert.Text = "Conf. Verticales";
+            btnAlert.UseVisualStyleBackColor = true;
+            btnAlert.Click += btnAlert_Click;
+            // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(793, 13);
+            txtBuscar.Location = new Point(849, 13);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.PlaceholderText = "Buscar...";
             txtBuscar.Size = new Size(293, 31);
@@ -103,7 +113,7 @@
             // 
             cmbVertical.FormattingEnabled = true;
             cmbVertical.Items.AddRange(new object[] { "Todos", "BO - Backoffice", "FO - Frontoffice", "FA - Facturación", "PM - Pricing", "LO - Logística" });
-            cmbVertical.Location = new Point(588, 11);
+            cmbVertical.Location = new Point(655, 11);
             cmbVertical.Name = "cmbVertical";
             cmbVertical.Size = new Size(182, 33);
             cmbVertical.TabIndex = 2;
@@ -237,16 +247,6 @@
             label1.Size = new Size(51, 25);
             label1.TabIndex = 0;
             label1.Text = "User:";
-            // 
-            // btnAlert
-            // 
-            btnAlert.Location = new Point(458, 12);
-            btnAlert.Name = "btnAlert";
-            btnAlert.Size = new Size(112, 34);
-            btnAlert.TabIndex = 8;
-            btnAlert.Text = "Edit Alert";
-            btnAlert.UseVisualStyleBackColor = true;
-            btnAlert.Click += btnAlert_Click;
             // 
             // App
             // 

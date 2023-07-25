@@ -36,31 +36,6 @@ namespace AutoRepsol
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        private void CLoseApp(object sender, FormClosingEventArgs e)
-        {
-            if (CloseCancel() == false)
-            {
-                e.Cancel = true;
-            }
-            else
-            {
-                conn.Close();
-                Environment.Exit(0);
-            }
-        }
-
-        public static bool CloseCancel()
-        {
-            const string message = "¿Está seguro de querer cerrar la aplicación?";
-            const string caption = "AutoRepsol";
-            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-                return true;
-            else
-                return false;
-        }
-
         private void GetInfoVertical(object sender, EventArgs e)
         {
             if (cbVertical.Text != null && cbVertical.Text != "")
@@ -279,6 +254,31 @@ namespace AutoRepsol
             var app = new App(userDB, conn);
             app.Show();
             this.Dispose(true);
+        }
+
+        private void CloseApp(object sender, FormClosingEventArgs e)
+        {
+            if (CloseCancel() == false)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                conn.Close();
+                Environment.Exit(0);
+            }
+        }
+
+        public static bool CloseCancel()
+        {
+            const string message = "¿Está seguro de querer cerrar la aplicación?";
+            const string caption = "AutoRepsol";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+                return true;
+            else
+                return false;
         }
     }
 }

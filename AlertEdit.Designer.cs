@@ -189,16 +189,17 @@
             dtBussines.Size = new Size(779, 725);
             dtBussines.TabIndex = 5;
             // 
-            // Form1
+            // AlertEdit
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1570, 857);
             Controls.Add(tableLayoutPanel1);
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "AlertEdit";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "REPSOL | Alert Editor v1.0";
+            Text = "AutoRepsol";
+            FormClosing += CloseApp;
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
